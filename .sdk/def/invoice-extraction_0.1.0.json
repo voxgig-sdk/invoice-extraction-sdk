@@ -1,0 +1,703 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Invoice Extraction API",
+    "description": "The Invoice Extraction API is designed to process and extract data from invoices submitted in various formats. It parses key information such as vendor details, amounts, items, and dates, enabling integration with accounting and ERP systems. Supports PDF, JPG, PNG, and WEBP formats with AI-powered extraction.",
+    "version": "1.0.0",
+    "contact": {
+      "email": "hola@invoiceextract.com"
+    },
+    "termsOfService": "https://invoiceextract.com.mx/"
+  },
+  "servers": [
+    {
+      "url": "https://invoiceextract-api-production.up.railway.app",
+      "description": "Production server"
+    }
+  ],
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ],
+  "paths": {
+    "/extract": {
+      "post": {
+        "summary": "Extract structured data from invoice",
+        "description": "Extracts structured JSON data from any invoice or receipt submitted as base64-encoded file. Supports PDF, JPG, PNG, and WEBP formats. Returns parsed information including issuer details, amounts, document metadata, and confidence score.",
+        "operationId": "extractInvoiceData",
+        "tags": [
+          "Invoice Extraction"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "file_base64",
+                  "media_type"
+                ],
+                "properties": {
+                  "file_base64": {
+                    "type": "string",
+                    "description": "Base64-encoded invoice file (PDF, JPG, PNG, or WEBP)",
+                    "example": "JVBERi0xLjQKJeLjz9MKMyAwIG9iago8PC9UeXBlL..."
+                  },
+                  "media_type": {
+                    "type": "string",
+                    "description": "MIME type of the submitted file",
+                    "enum": [
+                      "application/pdf",
+                      "image/jpeg",
+                      "image/jpg",
+                      "image/png",
+                      "image/webp"
+                    ],
+                    "example": "application/pdf"
+                  }
+                }
+              },
+              "examples": {
+                "pdf_invoice": {
+                  "summary": "PDF invoice example",
+                  "value": {
+                    "file_base64": "JVBERi0xLjQKJeLjz9MKMyAwIG9iago8PC9UeXBlL...",
+                    "media_type": "application/pdf"
+                  }
+                },
+                "image_invoice": {
+                  "summary": "Image invoice example",
+                  "value": {
+                    "file_base64": "/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBg...",
+                    "media_type": "image/jpeg"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful extraction of invoice data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "Indicates if the extraction was successful",
+                      "example": true
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "issuer": {
+                          "type": "object",
+                          "description": "Information about the invoice issuer/vendor",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "description": "Name of the issuing company or vendor",
+                              "example": "Papelería El Centro"
+                            },
+                            "tax_id": {
+                              "type": "string",
+                              "description": "Tax identification number (RFC, VAT, etc.)",
+                              "example": "PEC920314AB3"
+                            },
+                            "address": {
+                              "type": "string",
+                              "description": "Address of the issuer",
+                              "nullable": true
+                            },
+                            "email": {
+                              "type": "string",
+                              "description": "Email of the issuer",
+                              "nullable": true
+                            },
+                            "phone": {
+                              "type": "string",
+                              "description": "Phone number of the issuer",
+                              "nullable": true
+                            }
+                          }
+                        },
+                        "receiver": {
+                          "type": "object",
+                          "description": "Information about the invoice receiver/customer",
+                          "nullable": true,
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "description": "Name of the receiving company or customer"
+                            },
+                            "tax_id": {
+                              "type": "string",
+                              "description": "Tax identification number of receiver"
+                            },
+                            "address": {
+                              "type": "string",
+                              "description": "Address of the receiver",
+                              "nullable": true
+                            }
+                          }
+                        },
+                        "amounts": {
+                          "type": "object",
+                          "description": "Financial amounts from the invoice",
+                          "properties": {
+                            "subtotal": {
+                              "type": "number",
+                              "format": "float",
+                              "description": "Subtotal amount before taxes",
+                              "example": 4500
+                            },
+                            "tax_amount": {
+                              "type": "number",
+                              "format": "float",
+                              "description": "Total tax amount",
+                              "example": 720
+                            },
+                            "total": {
+                              "type": "number",
+                              "format": "float",
+                              "description": "Total amount including taxes",
+                              "example": 5220
+                            },
+                            "discount": {
+                              "type": "number",
+                              "format": "float",
+                              "description": "Discount amount if applicable",
+                              "nullable": true
+                            }
+                          }
+                        },
+                        "document": {
+                          "type": "object",
+                          "description": "Document metadata",
+                          "properties": {
+                            "number": {
+                              "type": "string",
+                              "description": "Invoice or document number",
+                              "example": "F-2024-00892"
+                            },
+                            "date": {
+                              "type": "string",
+                              "format": "date",
+                              "description": "Invoice date in YYYY-MM-DD format",
+                              "example": "2024-11-15"
+                            },
+                            "due_date": {
+                              "type": "string",
+                              "format": "date",
+                              "description": "Due date for payment",
+                              "nullable": true
+                            },
+                            "currency": {
+                              "type": "string",
+                              "description": "Currency code (ISO 4217)",
+                              "example": "MXN"
+                            },
+                            "type": {
+                              "type": "string",
+                              "description": "Type of document (invoice, receipt, etc.)",
+                              "nullable": true
+                            }
+                          }
+                        },
+                        "items": {
+                          "type": "array",
+                          "description": "Line items from the invoice",
+                          "nullable": true,
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "description": {
+                                "type": "string",
+                                "description": "Item description"
+                              },
+                              "quantity": {
+                                "type": "number",
+                                "description": "Quantity of the item"
+                              },
+                              "unit_price": {
+                                "type": "number",
+                                "format": "float",
+                                "description": "Price per unit"
+                              },
+                              "amount": {
+                                "type": "number",
+                                "format": "float",
+                                "description": "Total amount for this line item"
+                              },
+                              "tax_rate": {
+                                "type": "number",
+                                "format": "float",
+                                "description": "Tax rate applied to this item",
+                                "nullable": true
+                              }
+                            }
+                          }
+                        },
+                        "confidence": {
+                          "type": "number",
+                          "format": "float",
+                          "description": "Confidence score of the extraction (0 to 1)",
+                          "minimum": 0,
+                          "maximum": 1,
+                          "example": 0.97
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "successful_extraction": {
+                    "summary": "Successful invoice extraction",
+                    "value": {
+                      "success": true,
+                      "data": {
+                        "issuer": {
+                          "name": "Papelería El Centro",
+                          "tax_id": "PEC920314AB3"
+                        },
+                        "amounts": {
+                          "subtotal": 4500,
+                          "tax_amount": 720,
+                          "total": 5220
+                        },
+                        "document": {
+                          "number": "F-2024-00892",
+                          "date": "2024-11-15",
+                          "currency": "MXN"
+                        },
+                        "confidence": 0.97
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - Invalid input parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "example": "INVALID_INPUT"
+                        },
+                        "message": {
+                          "type": "string",
+                          "example": "Invalid base64 encoding or unsupported media type"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing API key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "example": "UNAUTHORIZED"
+                        },
+                        "message": {
+                          "type": "string",
+                          "example": "Invalid or missing API key"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden - API key quota exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "example": "QUOTA_EXCEEDED"
+                        },
+                        "message": {
+                          "type": "string",
+                          "example": "Monthly API call quota exceeded"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload too large - File size exceeds limit",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "example": "FILE_TOO_LARGE"
+                        },
+                        "message": {
+                          "type": "string",
+                          "example": "File size exceeds maximum allowed limit"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity - Unable to extract data from file",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "example": "EXTRACTION_FAILED"
+                        },
+                        "message": {
+                          "type": "string",
+                          "example": "Unable to extract invoice data from the provided file"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "example": "INTERNAL_ERROR"
+                        },
+                        "message": {
+                          "type": "string",
+                          "example": "An internal error occurred processing your request"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "summary": "Health check endpoint",
+        "description": "Returns the health status of the API service",
+        "operationId": "healthCheck",
+        "tags": [
+          "Health"
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Service is healthy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "healthy"
+                    },
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time",
+                      "example": "2024-11-15T10:30:00Z"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-api-key",
+        "description": "API key authentication. Get your free API key at https://invoiceextract.com.mx/. Format: 'iek_your_key_here'"
+      }
+    },
+    "schemas": {
+      "ExtractRequest": {
+        "type": "object",
+        "required": [
+          "file_base64",
+          "media_type"
+        ],
+        "properties": {
+          "file_base64": {
+            "type": "string",
+            "description": "Base64-encoded invoice file"
+          },
+          "media_type": {
+            "type": "string",
+            "enum": [
+              "application/pdf",
+              "image/jpeg",
+              "image/jpg",
+              "image/png",
+              "image/webp"
+            ],
+            "description": "MIME type of the file"
+          }
+        }
+      },
+      "ExtractResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/InvoiceData"
+          }
+        }
+      },
+      "InvoiceData": {
+        "type": "object",
+        "properties": {
+          "issuer": {
+            "$ref": "#/components/schemas/Party"
+          },
+          "receiver": {
+            "$ref": "#/components/schemas/Party",
+            "nullable": true
+          },
+          "amounts": {
+            "$ref": "#/components/schemas/Amounts"
+          },
+          "document": {
+            "$ref": "#/components/schemas/DocumentMetadata"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LineItem"
+            },
+            "nullable": true
+          },
+          "confidence": {
+            "type": "number",
+            "format": "float",
+            "minimum": 0,
+            "maximum": 1
+          }
+        }
+      },
+      "Party": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "tax_id": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "Amounts": {
+        "type": "object",
+        "properties": {
+          "subtotal": {
+            "type": "number",
+            "format": "float"
+          },
+          "tax_amount": {
+            "type": "number",
+            "format": "float"
+          },
+          "total": {
+            "type": "number",
+            "format": "float"
+          },
+          "discount": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          }
+        }
+      },
+      "DocumentMetadata": {
+        "type": "object",
+        "properties": {
+          "number": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "due_date": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "currency": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "LineItem": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "number"
+          },
+          "unit_price": {
+            "type": "number",
+            "format": "float"
+          },
+          "amount": {
+            "type": "number",
+            "format": "float"
+          },
+          "tax_rate": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "example": false
+          },
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Invoice Extraction",
+      "description": "Extract structured data from invoices and receipts"
+    },
+    {
+      "name": "Health",
+      "description": "API health and status monitoring"
+    }
+  ]
+}

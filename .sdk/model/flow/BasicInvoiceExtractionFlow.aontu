@@ -1,0 +1,18 @@
+# BasicInvoiceExtractionFlow
+
+main: kit: flow: BasicInvoiceExtractionFlow:
+{
+  entity: "invoice_extraction",
+  kind: "basic",
+  name: "BasicInvoiceExtractionFlow",
+  step: [
+    {
+      input: {
+        ref: "invoice_extraction_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicInvoiceExtractionFlow"
+}

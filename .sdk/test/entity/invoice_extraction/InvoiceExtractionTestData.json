@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "invoice_extraction": {
+      "INVOICE_EXTRACTION00": {
+        "data": {},
+        "file_base64": "s29",
+        "media_type": "s2a",
+        "success": false,
+        "id": "INVOICE_EXTRACTION00"
+      },
+      "INVOICE_EXTRACTION01": {
+        "data": {},
+        "file_base64": "s51",
+        "media_type": "s52",
+        "success": false,
+        "id": "INVOICE_EXTRACTION01"
+      },
+      "INVOICE_EXTRACTION02": {
+        "data": {},
+        "file_base64": "s79",
+        "media_type": "s7a",
+        "success": false,
+        "id": "INVOICE_EXTRACTION02"
+      }
+    }
+  },
+  "new": {
+    "invoice_extraction": {
+      "invoice_extraction_ref01": {
+        "data": {},
+        "file_base64": "sa1",
+        "media_type": "sa2",
+        "success": false
+      }
+    }
+  }
+}

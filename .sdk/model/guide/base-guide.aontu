@@ -1,0 +1,20 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 2
+  metrics: count: path: 2
+  metrics: count: method: 2
+
+  entity: health: {
+    path: "/health": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: invoice_extraction: {
+    path: "/extract": {
+      op: create: method: *POST
+    }
+  }
+
+}

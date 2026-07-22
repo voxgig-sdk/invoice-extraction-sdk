@@ -1,0 +1,52 @@
+# Entity: invoice_extraction
+
+main: kit: entity: invoice_extraction: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "data"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "file_base64"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "media_type"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "success"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+  ]
+
+  name: "invoice_extraction"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/extract"
+          parts: [
+            "extract"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

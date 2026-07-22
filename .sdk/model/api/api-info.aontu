@@ -1,0 +1,32 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        email: "hola@invoiceextract.com"
+      }
+      description: "The Invoice Extraction API is designed to process and extract data from invoices submitted in various formats. It parses key information such as vendor details, amounts, items, and dates, enabling integration with accounting and ERP systems. Supports PDF, JPG, PNG, and WEBP formats with AI-powered extraction."
+      security: {
+        in: "header"
+        name: "x-api-key"
+        prefix: ""
+        scheme: "ApiKeyAuth"
+        type: "apiKey"
+      }
+      servers: [
+        {
+          description: "Production server"
+          url: "https://invoiceextract-api-production.up.railway.app"
+        }
+      ]
+      summary: "The Invoice Extraction API is designed to process and extract data from invoices submitted in various formats."
+      termsOfService: "https://invoiceextract.com.mx/"
+      title: "Invoice Extraction API"
+      version: "1.0.0"
+      website: "https://invoiceextract-api-production.up.railway.app"
+    }
+  }
+}
+
