@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from invoiceextraction_sdk.utility.voxgig_struct import voxgig_struct as vs
 from invoiceextraction_sdk import InvoiceExtractionSDK
-from core import helpers
+from invoiceextraction_sdk.core import helpers
 from test import runner
 
 
@@ -56,16 +56,16 @@ def _health_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "INVOICEEXTRACTION_TEST_HEALTH_ENTID": {},
-        "INVOICEEXTRACTION_TEST_LIVE": "FALSE",
-        "INVOICEEXTRACTION_APIKEY": "NONE",
+        "INVOICE_EXTRACTION_TEST_HEALTH_ENTID": {},
+        "INVOICE_EXTRACTION_TEST_LIVE": "FALSE",
+        "INVOICE_EXTRACTION_APIKEY": "NONE",
     })
 
-    live = env.get("INVOICEEXTRACTION_TEST_LIVE") == "TRUE"
+    live = env.get("INVOICE_EXTRACTION_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("INVOICEEXTRACTION_APIKEY"),
+            "apikey": env.get("INVOICE_EXTRACTION_APIKEY"),
         }
         client = InvoiceExtractionSDK(merged_opts)
         return {

@@ -60,16 +60,16 @@ function health_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["INVOICEEXTRACTION_TEST_HEALTH_ENTID"] = {},
-    ["INVOICEEXTRACTION_TEST_LIVE"] = "FALSE",
-    ["INVOICEEXTRACTION_APIKEY"] = "NONE",
+    ["INVOICE_EXTRACTION_TEST_HEALTH_ENTID"] = {},
+    ["INVOICE_EXTRACTION_TEST_LIVE"] = "FALSE",
+    ["INVOICE_EXTRACTION_APIKEY"] = "NONE",
   })
 
-  local live = env["INVOICEEXTRACTION_TEST_LIVE"] == "TRUE"
+  local live = env["INVOICE_EXTRACTION_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["INVOICEEXTRACTION_APIKEY"],
+      apikey = env["INVOICE_EXTRACTION_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

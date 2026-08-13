@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ InvoiceExtractionUtility::setRegistrar(function (InvoiceExtractionUtility $u): v
     $u->prepare_params = [InvoiceExtractionPrepareParams::class, 'call'];
     $u->prepare_path = [InvoiceExtractionPreparePath::class, 'call'];
     $u->prepare_query = [InvoiceExtractionPrepareQuery::class, 'call'];
+    $u->graphql_body = [InvoiceExtractionGraphql::class, 'body'];
+    $u->graphql_errors = [InvoiceExtractionGraphql::class, 'errors'];
     $u->result_basic = [InvoiceExtractionResultBasic::class, 'call'];
     $u->result_body = [InvoiceExtractionResultBody::class, 'call'];
     $u->result_headers = [InvoiceExtractionResultHeaders::class, 'call'];

@@ -36,43 +36,75 @@ HealthLoadMatch = Struct.new(
 
 # InvoiceExtraction entity data model.
 #
-# @!attribute [rw] data
+# @!attribute [rw] amounts
+#   @return [Hash, nil]
+#
+# @!attribute [rw] confidence
+#   @return [Float, nil]
+#
+# @!attribute [rw] document
 #   @return [Hash, nil]
 #
 # @!attribute [rw] file_base64
 #   @return [String]
 #
+# @!attribute [rw] issuer
+#   @return [Hash, nil]
+#
+# @!attribute [rw] items
+#   @return [Array, nil]
+#
 # @!attribute [rw] media_type
 #   @return [String]
 #
-# @!attribute [rw] success
-#   @return [Boolean, nil]
+# @!attribute [rw] receiver
+#   @return [Hash, nil]
 InvoiceExtraction = Struct.new(
-  :data,
+  :amounts,
+  :confidence,
+  :document,
   :file_base64,
+  :issuer,
+  :items,
   :media_type,
-  :success,
+  :receiver,
   keyword_init: true
 )
 
 # Request payload for InvoiceExtraction#create.
 #
-# @!attribute [rw] data
+# @!attribute [rw] amounts
+#   @return [Hash, nil]
+#
+# @!attribute [rw] confidence
+#   @return [Float, nil]
+#
+# @!attribute [rw] document
 #   @return [Hash, nil]
 #
 # @!attribute [rw] file_base64
 #   @return [String]
 #
+# @!attribute [rw] issuer
+#   @return [Hash, nil]
+#
+# @!attribute [rw] items
+#   @return [Array, nil]
+#
 # @!attribute [rw] media_type
 #   @return [String]
 #
-# @!attribute [rw] success
-#   @return [Boolean, nil]
+# @!attribute [rw] receiver
+#   @return [Hash, nil]
 InvoiceExtractionCreateData = Struct.new(
-  :data,
+  :amounts,
+  :confidence,
+  :document,
   :file_base64,
+  :issuer,
+  :items,
   :media_type,
-  :success,
+  :receiver,
   keyword_init: true
 )
 

@@ -148,10 +148,14 @@ local invoice_extraction = client:InvoiceExtraction(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `table` | No |  |
+| `amounts` | `table` | No |  |
+| `confidence` | `number` | No |  |
+| `document` | `table` | No |  |
 | `file_base64` | `string` | Yes |  |
+| `issuer` | `table` | No |  |
+| `items` | `table` | No |  |
 | `media_type` | `string` | Yes |  |
-| `success` | `boolean` | No |  |
+| `receiver` | `table` | No |  |
 
 ### Operations
 

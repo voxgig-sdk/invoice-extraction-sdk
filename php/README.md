@@ -37,7 +37,7 @@ $client = new InvoiceExtractionSDK([
 
 ```php
 try {
-    // load() returns the bare Health record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Health record (throws on error).
     $health = $client->Health()->load();
     print_r($health);
 } catch (\Throwable $err) {
@@ -125,7 +125,8 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = InvoiceExtractionSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $health = $client->Health()->load();
 print_r($health);
 ```
@@ -228,7 +229,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -261,10 +262,14 @@ API path: `/health`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
+| `amounts` |  |
+| `confidence` |  |
+| `document` |  |
 | `file_base64` |  |
+| `issuer` |  |
+| `items` |  |
 | `media_type` |  |
-| `success` |  |
+| `receiver` |  |
 
 Operations: Create.
 
@@ -295,7 +300,7 @@ Create an instance: `$health = $client->Health();`
 #### Example: Load
 
 ```php
-// load() returns the bare Health record (throws on error).
+// load() returns the ENTITY — call data_get() for the Health record (throws on error).
 $health = $client->Health()->load();
 ```
 
@@ -314,10 +319,14 @@ Create an instance: `$invoice_extraction = $client->InvoiceExtraction();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `array` |  |
+| `amounts` | `array` |  |
+| `confidence` | `float` |  |
+| `document` | `array` |  |
 | `file_base64` | `string` |  |
+| `issuer` | `array` |  |
+| `items` | `array` |  |
 | `media_type` | `string` |  |
-| `success` | `bool` |  |
+| `receiver` | `array` |  |
 
 #### Example: Create
 

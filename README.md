@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = InvoiceExtractionSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = InvoiceExtractionSDK.test({
+  entity: {
+    health: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const health = await client.Health().load()
-// health is a bare Health populated with mock data
+// health is the Health entity, populated with mock data
+// — call health.data() for the record itself
 console.log(health)
 ```
 
@@ -190,7 +199,7 @@ $client = new InvoiceExtractionSDK([
 ]);
 
 
-// Load a specific health (returns the bare record; throws on error)
+// Load a specific health (returns the ENTITY; call data_get() for the record; throws on error)
 $health = $client->Health()->load();
 print_r($health);
 ```
@@ -222,7 +231,7 @@ client = InvoiceExtractionSDK.new({
 })
 
 
-# Load a specific health (returns the bare record; raises on error)
+# Load a specific health (returns the ENTITY; call data_get for the record)
 health = client.Health.load()
 puts health
 ```
@@ -358,6 +367,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://invoiceextract-api-production.up.railway.app](https://invoiceextract-api-production.up.railway.app)
 

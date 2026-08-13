@@ -151,10 +151,14 @@ invoice_extraction = client.InvoiceExtraction
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `Hash` | No |  |
+| `amounts` | `Hash` | No |  |
+| `confidence` | `Float` | No |  |
+| `document` | `Hash` | No |  |
 | `file_base64` | `String` | Yes |  |
+| `issuer` | `Hash` | No |  |
+| `items` | `Array` | No |  |
 | `media_type` | `String` | Yes |  |
-| `success` | `Boolean` | No |  |
+| `receiver` | `Hash` | No |  |
 
 ### Operations
 

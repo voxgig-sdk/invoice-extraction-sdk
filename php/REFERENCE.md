@@ -150,10 +150,14 @@ $invoice_extraction = $client->InvoiceExtraction();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `array` | No |  |
+| `amounts` | `array` | No |  |
+| `confidence` | `float` | No |  |
+| `document` | `array` | No |  |
 | `file_base64` | `string` | Yes |  |
+| `issuer` | `array` | No |  |
+| `items` | `array` | No |  |
 | `media_type` | `string` | Yes |  |
-| `success` | `bool` | No |  |
+| `receiver` | `array` | No |  |
 
 ### Operations
 

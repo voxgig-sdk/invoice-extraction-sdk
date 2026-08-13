@@ -6,7 +6,17 @@ main: kit: entity: invoice_extraction: {
 
   fields: [
     {
-      name: "data"
+      name: "amounts"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "confidence"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "document"
       req: false
       type: "`$OBJECT`"
     }
@@ -16,14 +26,24 @@ main: kit: entity: invoice_extraction: {
       type: "`$STRING`"
     }
     {
+      name: "issuer"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "items"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
       name: "media_type"
       req: true
       type: "`$STRING`"
     }
     {
-      name: "success"
+      name: "receiver"
       req: false
-      type: "`$BOOLEAN`"
+      type: "`$OBJECT`"
     }
   ]
 
@@ -40,7 +60,7 @@ main: kit: entity: invoice_extraction: {
           ]
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.data`"
           }
         }
       ]

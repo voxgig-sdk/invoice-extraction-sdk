@@ -180,10 +180,14 @@ const invoice_extraction = client.InvoiceExtraction()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `Record<string, any>` | No |  |
+| `amounts` | `Record<string, any>` | No |  |
+| `confidence` | `number` | No |  |
+| `document` | `Record<string, any>` | No |  |
 | `file_base64` | `string` | Yes |  |
+| `issuer` | `Record<string, any>` | No |  |
+| `items` | `any[]` | No |  |
 | `media_type` | `string` | Yes |  |
-| `success` | `boolean` | No |  |
+| `receiver` | `Record<string, any>` | No |  |
 
 ### Operations
 

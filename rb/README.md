@@ -36,7 +36,7 @@ client = InvoiceExtractionSDK.new({
 
 ```ruby
 begin
-  # load returns the bare Health record (raises on error).
+  # load returns the ENTITY — call data_get for the Health record (raises on error).
   health = client.Health.load()
   puts health
 rescue => err
@@ -119,7 +119,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = InvoiceExtractionSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 health = client.Health.load()
 puts health
 ```
@@ -251,10 +252,14 @@ API path: `/health`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
+| `amounts` |  |
+| `confidence` |  |
+| `document` |  |
 | `file_base64` |  |
+| `issuer` |  |
+| `items` |  |
 | `media_type` |  |
-| `success` |  |
+| `receiver` |  |
 
 Operations: Create.
 
@@ -285,7 +290,7 @@ Create an instance: `health = client.Health`
 #### Example: Load
 
 ```ruby
-# load returns the bare Health record (raises on error).
+# load returns the ENTITY — call data_get for the Health record (raises on error).
 health = client.Health.load()
 ```
 
@@ -304,10 +309,14 @@ Create an instance: `invoice_extraction = client.InvoiceExtraction`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `Hash` |  |
+| `amounts` | `Hash` |  |
+| `confidence` | `Float` |  |
+| `document` | `Hash` |  |
 | `file_base64` | `String` |  |
+| `issuer` | `Hash` |  |
+| `items` | `Array` |  |
 | `media_type` | `String` |  |
-| `success` | `Boolean` |  |
+| `receiver` | `Hash` |  |
 
 #### Example: Create
 

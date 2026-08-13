@@ -52,6 +52,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/health",
 								"parts": []any{
@@ -65,7 +66,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -76,31 +76,59 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "data",
+						"name": "amounts",
 						"req": false,
 						"type": "`$OBJECT`",
 						"index$": 0,
 					},
 					map[string]any{
 						"active": true,
+						"name": "confidence",
+						"req": false,
+						"type": "`$NUMBER`",
+						"index$": 1,
+					},
+					map[string]any{
+						"active": true,
+						"name": "document",
+						"req": false,
+						"type": "`$OBJECT`",
+						"index$": 2,
+					},
+					map[string]any{
+						"active": true,
 						"name": "file_base64",
 						"req": true,
 						"type": "`$STRING`",
-						"index$": 1,
+						"index$": 3,
+					},
+					map[string]any{
+						"active": true,
+						"name": "issuer",
+						"req": false,
+						"type": "`$OBJECT`",
+						"index$": 4,
+					},
+					map[string]any{
+						"active": true,
+						"name": "items",
+						"req": false,
+						"type": "`$ARRAY`",
+						"index$": 5,
 					},
 					map[string]any{
 						"active": true,
 						"name": "media_type",
 						"req": true,
 						"type": "`$STRING`",
-						"index$": 2,
+						"index$": 6,
 					},
 					map[string]any{
 						"active": true,
-						"name": "success",
+						"name": "receiver",
 						"req": false,
-						"type": "`$BOOLEAN`",
-						"index$": 3,
+						"type": "`$OBJECT`",
+						"index$": 7,
 					},
 				},
 				"name": "invoice_extraction",
@@ -112,6 +140,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "POST",
 								"orig": "/extract",
 								"parts": []any{
@@ -120,12 +149,11 @@ func MakeConfig() map[string]any {
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.data`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "create",
 					},
 				},
 				"relations": map[string]any{

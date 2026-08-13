@@ -16,16 +16,24 @@ export interface HealthLoadMatch {
 }
 
 export interface InvoiceExtraction {
-  data?: Record<string, any>
+  amounts?: Record<string, any>
+  confidence?: number
+  document?: Record<string, any>
   file_base64: string
+  issuer?: Record<string, any>
+  items?: any[]
   media_type: string
-  success?: boolean
+  receiver?: Record<string, any>
 }
 
 export interface InvoiceExtractionCreateData {
-  data?: Record<string, any>
+  amounts?: Record<string, any>
+  confidence?: number
+  document?: Record<string, any>
   file_base64: string
+  issuer?: Record<string, any>
+  items?: any[]
   media_type: string
-  success?: boolean
+  receiver?: Record<string, any>
 }
 

@@ -242,10 +242,14 @@ API path: `/health`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
+| `amounts` |  |
+| `confidence` |  |
+| `document` |  |
 | `file_base64` |  |
+| `issuer` |  |
+| `items` |  |
 | `media_type` |  |
-| `success` |  |
+| `receiver` |  |
 
 Operations: Create.
 
@@ -294,10 +298,14 @@ Create an instance: `local invoice_extraction = client:InvoiceExtraction(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `table` |  |
+| `amounts` | `table` |  |
+| `confidence` | `number` |  |
+| `document` | `table` |  |
 | `file_base64` | `string` |  |
+| `issuer` | `table` |  |
+| `items` | `table` |  |
 | `media_type` | `string` |  |
-| `success` | `boolean` |  |
+| `receiver` | `table` |  |
 
 #### Example: Create
 

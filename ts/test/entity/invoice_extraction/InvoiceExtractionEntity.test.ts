@@ -26,8 +26,8 @@ import {
 describe('InvoiceExtractionEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when INVOICEEXTRACTION_TEST_LIVE=TRUE.
-  afterEach(liveDelay('INVOICEEXTRACTION_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when INVOICE_EXTRACTION_TEST_LIVE=TRUE.
+  afterEach(liveDelay('INVOICE_EXTRACTION_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = InvoiceExtractionSDK.test()
@@ -62,7 +62,7 @@ describe('InvoiceExtractionEntity', async () => {
     const invoice_extraction_ref01_ent = client.InvoiceExtraction()
     let invoice_extraction_ref01_data = setup.data.new.invoice_extraction['invoice_extraction_ref01']
 
-    invoice_extraction_ref01_data = await invoice_extraction_ref01_ent.create(invoice_extraction_ref01_data)
+    invoice_extraction_ref01_data = (await invoice_extraction_ref01_ent.create(invoice_extraction_ref01_data)).data()
     assert(null != invoice_extraction_ref01_data)
 
 

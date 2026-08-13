@@ -26,8 +26,8 @@ import {
 describe('HealthEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when INVOICEEXTRACTION_TEST_LIVE=TRUE.
-  afterEach(liveDelay('INVOICEEXTRACTION_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when INVOICE_EXTRACTION_TEST_LIVE=TRUE.
+  afterEach(liveDelay('INVOICE_EXTRACTION_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = InvoiceExtractionSDK.test()
@@ -62,7 +62,7 @@ describe('HealthEntity', async () => {
     // LOAD
     const health_ref01_ent = client.Health()
     const health_ref01_match_dt0: any = {}
-    const health_ref01_data_dt0 = await health_ref01_ent.load(health_ref01_match_dt0)
+    const health_ref01_data_dt0 = (await health_ref01_ent.load(health_ref01_match_dt0)).data()
     assert(null != health_ref01_data_dt0)
 
 

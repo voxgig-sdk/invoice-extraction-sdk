@@ -29,18 +29,26 @@ class HealthLoadMatch
 /** InvoiceExtraction entity data model. */
 class InvoiceExtraction
 {
-    public ?array $data = null;
+    public ?array $amounts = null;
+    public ?float $confidence = null;
+    public ?array $document = null;
     public string $file_base64;
+    public ?array $issuer = null;
+    public ?array $items = null;
     public string $media_type;
-    public ?bool $success = null;
+    public ?array $receiver = null;
 }
 
 /** Request payload for InvoiceExtraction#create. */
 class InvoiceExtractionCreateData
 {
-    public ?array $data = null;
+    public ?array $amounts = null;
+    public ?float $confidence = null;
+    public ?array $document = null;
     public string $file_base64;
+    public ?array $issuer = null;
+    public ?array $items = null;
     public string $media_type;
-    public ?bool $success = null;
+    public ?array $receiver = null;
 }
 

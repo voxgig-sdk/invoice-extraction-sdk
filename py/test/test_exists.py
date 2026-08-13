@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# InvoiceExtraction SDK exists test
 
 import pytest
 from invoiceextraction_sdk import InvoiceExtractionSDK

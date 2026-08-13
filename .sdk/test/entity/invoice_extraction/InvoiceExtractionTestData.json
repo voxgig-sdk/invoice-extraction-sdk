@@ -2,24 +2,36 @@
   "existing": {
     "invoice_extraction": {
       "INVOICE_EXTRACTION00": {
-        "data": {},
-        "file_base64": "s29",
-        "media_type": "s2a",
-        "success": false,
+        "amounts": {},
+        "confidence": 81,
+        "document": {},
+        "file_base64": "s53",
+        "issuer": {},
+        "items": [],
+        "media_type": "s56",
+        "receiver": {},
         "id": "INVOICE_EXTRACTION00"
       },
       "INVOICE_EXTRACTION01": {
-        "data": {},
-        "file_base64": "s51",
-        "media_type": "s52",
-        "success": false,
+        "amounts": {},
+        "confidence": 161,
+        "document": {},
+        "file_base64": "sa3",
+        "issuer": {},
+        "items": [],
+        "media_type": "sa6",
+        "receiver": {},
         "id": "INVOICE_EXTRACTION01"
       },
       "INVOICE_EXTRACTION02": {
-        "data": {},
-        "file_base64": "s79",
-        "media_type": "s7a",
-        "success": false,
+        "amounts": {},
+        "confidence": 241,
+        "document": {},
+        "file_base64": "sf3",
+        "issuer": {},
+        "items": [],
+        "media_type": "sf6",
+        "receiver": {},
         "id": "INVOICE_EXTRACTION02"
       }
     }
@@ -27,10 +39,14 @@
   "new": {
     "invoice_extraction": {
       "invoice_extraction_ref01": {
-        "data": {},
-        "file_base64": "sa1",
-        "media_type": "sa2",
-        "success": false
+        "amounts": {},
+        "confidence": 321,
+        "document": {},
+        "file_base64": "s143",
+        "issuer": {},
+        "items": [],
+        "media_type": "s146",
+        "receiver": {}
       }
     }
   }

@@ -155,10 +155,14 @@ fmt.Println(invoiceExtraction.GetName()) // "invoice_extraction"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `map[string]any` | No |  |
+| `amounts` | `map[string]any` | No |  |
+| `confidence` | `float64` | No |  |
+| `document` | `map[string]any` | No |  |
 | `file_base64` | `string` | Yes |  |
+| `issuer` | `map[string]any` | No |  |
+| `items` | `[]any` | No |  |
 | `media_type` | `string` | Yes |  |
-| `success` | `bool` | No |  |
+| `receiver` | `map[string]any` | No |  |
 
 ### Operations
 

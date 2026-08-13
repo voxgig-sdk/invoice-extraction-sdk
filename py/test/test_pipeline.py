@@ -16,11 +16,11 @@
 import pytest
 
 from invoiceextraction_sdk import InvoiceExtractionSDK
-from core.error import InvoiceExtractionError
-from core.result import InvoiceExtractionResult
-from core.response import InvoiceExtractionResponse
-from core.spec import InvoiceExtractionSpec
-from feature.base_feature import InvoiceExtractionBaseFeature
+from invoiceextraction_sdk.core.error import InvoiceExtractionError
+from invoiceextraction_sdk.core.result import InvoiceExtractionResult
+from invoiceextraction_sdk.core.response import InvoiceExtractionResponse
+from invoiceextraction_sdk.core.spec import InvoiceExtractionSpec
+from invoiceextraction_sdk.feature.base_feature import InvoiceExtractionBaseFeature
 
 
 def _client():

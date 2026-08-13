@@ -44,7 +44,7 @@ func TestInvoiceExtractionEntity(t *testing.T) {
 		// The basic flow consumes synthetic IDs from the fixture. In live mode
 		// without an *_ENTID env override, those IDs hit the live API and 4xx.
 		if setup.syntheticOnly {
-			t.Skip("live entity test uses synthetic IDs from fixture — set INVOICEEXTRACTION_TEST_INVOICE_EXTRACTION_ENTID JSON to run live")
+			t.Skip("live entity test uses synthetic IDs from fixture — set INVOICE_EXTRACTION_TEST_INVOICE_EXTRACTION_ENTID JSON to run live")
 			return
 		}
 		client := setup.client
@@ -58,7 +58,7 @@ func TestInvoiceExtractionEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		invoiceExtractionRef01Data = core.ToMapAny(invoiceExtractionRef01DataResult)
+		invoiceExtractionRef01Data = core.ToMapAny(entityData(invoiceExtractionRef01DataResult))
 		if invoiceExtractionRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -103,38 +103,38 @@ func invoice_extractionBasicSetup(extra map[string]any) *entityTestSetup {
 	// Detect ENTID env override before envOverride consumes it. When live
 	// mode is on without a real override, the basic test runs against synthetic
 	// IDs from the fixture and 4xx's. Surface this so the test can skip.
-	entidEnvRaw := os.Getenv("INVOICEEXTRACTION_TEST_INVOICE_EXTRACTION_ENTID")
+	entidEnvRaw := os.Getenv("INVOICE_EXTRACTION_TEST_INVOICE_EXTRACTION_ENTID")
 	idmapOverridden := entidEnvRaw != "" && strings.HasPrefix(strings.TrimSpace(entidEnvRaw), "{")
 
 	env := envOverride(map[string]any{
-		"INVOICEEXTRACTION_TEST_INVOICE_EXTRACTION_ENTID": idmap,
-		"INVOICEEXTRACTION_TEST_LIVE":      "FALSE",
-		"INVOICEEXTRACTION_TEST_EXPLAIN":   "FALSE",
-		"INVOICEEXTRACTION_APIKEY":         "NONE",
+		"INVOICE_EXTRACTION_TEST_INVOICE_EXTRACTION_ENTID": idmap,
+		"INVOICE_EXTRACTION_TEST_LIVE":      "FALSE",
+		"INVOICE_EXTRACTION_TEST_EXPLAIN":   "FALSE",
+		"INVOICE_EXTRACTION_APIKEY":         "NONE",
 	})
 
-	idmapResolved := core.ToMapAny(env["INVOICEEXTRACTION_TEST_INVOICE_EXTRACTION_ENTID"])
+	idmapResolved := core.ToMapAny(env["INVOICE_EXTRACTION_TEST_INVOICE_EXTRACTION_ENTID"])
 	if idmapResolved == nil {
 		idmapResolved = core.ToMapAny(idmap)
 	}
 
-	if env["INVOICEEXTRACTION_TEST_LIVE"] == "TRUE" {
+	if env["INVOICE_EXTRACTION_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["INVOICEEXTRACTION_APIKEY"],
+				"apikey": env["INVOICE_EXTRACTION_APIKEY"],
 			},
 			extra,
 		})
 		client = sdk.NewInvoiceExtractionSDK(core.ToMapAny(mergedOpts))
 	}
 
-	live := env["INVOICEEXTRACTION_TEST_LIVE"] == "TRUE"
+	live := env["INVOICE_EXTRACTION_TEST_LIVE"] == "TRUE"
 	return &entityTestSetup{
 		client:        client,
 		data:          entityData,
 		idmap:         idmapResolved,
 		env:           env,
-		explain:       env["INVOICEEXTRACTION_TEST_EXPLAIN"] == "TRUE",
+		explain:       env["INVOICE_EXTRACTION_TEST_EXPLAIN"] == "TRUE",
 		live:          live,
 		syntheticOnly: live && !idmapOverridden,
 		now:           time.Now().UnixMilli(),

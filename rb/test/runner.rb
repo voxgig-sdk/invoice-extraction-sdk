@@ -23,8 +23,8 @@ module InvoiceExtractionTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("INVOICEEXTRACTION_TEST_LIVE")
-    override = getenv("INVOICEEXTRACTION_TEST_OVERRIDE")
+    live = getenv("INVOICE_EXTRACTION_TEST_LIVE")
+    override = getenv("INVOICE_EXTRACTION_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module InvoiceExtractionTestRunner
       end
     end
 
-    explain = getenv("INVOICEEXTRACTION_TEST_EXPLAIN")
-    m["INVOICEEXTRACTION_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("INVOICE_EXTRACTION_TEST_EXPLAIN")
+    m["INVOICE_EXTRACTION_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

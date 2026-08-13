@@ -144,10 +144,14 @@ invoice_extraction = client.InvoiceExtraction()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `dict` | No |  |
+| `amounts` | `dict` | No |  |
+| `confidence` | `float` | No |  |
+| `document` | `dict` | No |  |
 | `file_base64` | `str` | Yes |  |
+| `issuer` | `dict` | No |  |
+| `items` | `list` | No |  |
 | `media_type` | `str` | Yes |  |
-| `success` | `bool` | No |  |
+| `receiver` | `dict` | No |  |
 
 ### Operations
 

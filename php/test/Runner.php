@@ -43,8 +43,8 @@ class InvoiceExtractionTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('INVOICEEXTRACTION_TEST_LIVE');
-        $override = self::getenv('INVOICEEXTRACTION_TEST_OVERRIDE');
+        $live = self::getenv('INVOICE_EXTRACTION_TEST_LIVE');
+        $override = self::getenv('INVOICE_EXTRACTION_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class InvoiceExtractionTestRunner
             }
         }
 
-        $explain = self::getenv('INVOICEEXTRACTION_TEST_EXPLAIN');
+        $explain = self::getenv('INVOICE_EXTRACTION_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['INVOICEEXTRACTION_TEST_EXPLAIN'] = $explain;
+            $m['INVOICE_EXTRACTION_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

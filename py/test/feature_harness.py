@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import InvoiceExtractionControl
-from core.error import InvoiceExtractionError
-from core.result import InvoiceExtractionResult
-from core.spec import InvoiceExtractionSpec
+from invoiceextraction_sdk.config import make_config
+from invoiceextraction_sdk.features import _make_feature
+from invoiceextraction_sdk.core.control import InvoiceExtractionControl
+from invoiceextraction_sdk.core.error import InvoiceExtractionError
+from invoiceextraction_sdk.core.result import InvoiceExtractionResult
+from invoiceextraction_sdk.core.spec import InvoiceExtractionSpec
 
 
 # True when this SDK was generated with the named feature.

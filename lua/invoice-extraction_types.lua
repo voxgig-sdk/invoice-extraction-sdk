@@ -15,16 +15,24 @@
 ---@field timestamp? string
 
 ---@class InvoiceExtraction
----@field data? table
+---@field amounts? table
+---@field confidence? number
+---@field document? table
 ---@field file_base64 string
+---@field issuer? table
+---@field items? table
 ---@field media_type string
----@field success? boolean
+---@field receiver? table
 
 ---@class InvoiceExtractionCreateData
----@field data? table
+---@field amounts? table
+---@field confidence? number
+---@field document? table
 ---@field file_base64 string
+---@field issuer? table
+---@field items? table
 ---@field media_type string
----@field success? boolean
+---@field receiver? table
 
 local M = {}
 

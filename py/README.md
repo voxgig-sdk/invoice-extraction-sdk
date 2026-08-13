@@ -41,7 +41,7 @@ client = InvoiceExtractionSDK({
 
 ### 3. Load a health
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -125,7 +125,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = InvoiceExtractionSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 health = client.Health().load()
 # health contains the mock response record
 ```
@@ -225,7 +226,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -258,10 +259,14 @@ API path: `/health`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
+| `amounts` |  |
+| `confidence` |  |
+| `document` |  |
 | `file_base64` |  |
+| `issuer` |  |
+| `items` |  |
 | `media_type` |  |
-| `success` |  |
+| `receiver` |  |
 
 Operations: Create.
 
@@ -310,10 +315,14 @@ Create an instance: `invoice_extraction = client.InvoiceExtraction()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `dict` |  |
+| `amounts` | `dict` |  |
+| `confidence` | `float` |  |
+| `document` | `dict` |  |
 | `file_base64` | `str` |  |
+| `issuer` | `dict` |  |
+| `items` | `list` |  |
 | `media_type` | `str` |  |
-| `success` | `bool` |  |
+| `receiver` | `dict` |  |
 
 #### Example: Create
 

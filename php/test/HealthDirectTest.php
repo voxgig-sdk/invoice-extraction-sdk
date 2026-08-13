@@ -65,16 +65,16 @@ function health_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "INVOICEEXTRACTION_TEST_HEALTH_ENTID" => [],
-        "INVOICEEXTRACTION_TEST_LIVE" => "FALSE",
-        "INVOICEEXTRACTION_APIKEY" => "NONE",
+        "INVOICE_EXTRACTION_TEST_HEALTH_ENTID" => [],
+        "INVOICE_EXTRACTION_TEST_LIVE" => "FALSE",
+        "INVOICE_EXTRACTION_APIKEY" => "NONE",
     ]);
 
-    $live = $env["INVOICEEXTRACTION_TEST_LIVE"] === "TRUE";
+    $live = $env["INVOICE_EXTRACTION_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["INVOICEEXTRACTION_APIKEY"],
+            "apikey" => $env["INVOICE_EXTRACTION_APIKEY"],
         ];
         $client = new InvoiceExtractionSDK($merged_opts);
         return [

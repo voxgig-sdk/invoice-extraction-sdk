@@ -19,11 +19,15 @@ import {
 describe('HealthDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when INVOICEEXTRACTION_TEST_LIVE=TRUE.
-  afterEach(liveDelay('INVOICEEXTRACTION_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when INVOICE_EXTRACTION_TEST_LIVE=TRUE.
+  afterEach(liveDelay('INVOICE_EXTRACTION_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new InvoiceExtractionSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -72,19 +76,19 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'INVOICEEXTRACTION_TEST_HEALTH_ENTID': {},
-    'INVOICEEXTRACTION_TEST_LIVE': 'FALSE',
-    'INVOICEEXTRACTION_APIKEY': 'NONE',
+    'INVOICE_EXTRACTION_TEST_HEALTH_ENTID': {},
+    'INVOICE_EXTRACTION_TEST_LIVE': 'FALSE',
+    'INVOICE_EXTRACTION_APIKEY': 'NONE',
   })
 
-  const live = 'TRUE' === env.INVOICEEXTRACTION_TEST_LIVE
+  const live = 'TRUE' === env.INVOICE_EXTRACTION_TEST_LIVE
 
   if (live) {
     const client = new InvoiceExtractionSDK({
-      apikey: env.INVOICEEXTRACTION_APIKEY,
+      apikey: env.INVOICE_EXTRACTION_APIKEY,
     })
 
-    let idmap: any = env['INVOICEEXTRACTION_TEST_HEALTH_ENTID']
+    let idmap: any = env['INVOICE_EXTRACTION_TEST_HEALTH_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

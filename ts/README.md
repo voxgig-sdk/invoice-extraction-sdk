@@ -123,7 +123,8 @@ Create a mock client for unit testing — no server required:
 const client = InvoiceExtractionSDK.test()
 
 const health = await client.Health().load()
-// health is a bare entity populated with mock response data
+// health is the entity, populated with mock response data
+// — call health.data() for the record itself
 console.log(health)
 ```
 
@@ -303,10 +304,14 @@ API path: `/health`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
+| `amounts` |  |
+| `confidence` |  |
+| `document` |  |
 | `file_base64` |  |
+| `issuer` |  |
+| `items` |  |
 | `media_type` |  |
-| `success` |  |
+| `receiver` |  |
 
 Operations: create.
 
@@ -355,10 +360,14 @@ Create an instance: `const invoice_extraction = client.InvoiceExtraction()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `Record<string, any>` |  |
+| `amounts` | `Record<string, any>` |  |
+| `confidence` | `number` |  |
+| `document` | `Record<string, any>` |  |
 | `file_base64` | `string` |  |
+| `issuer` | `Record<string, any>` |  |
+| `items` | `any[]` |  |
 | `media_type` | `string` |  |
-| `success` | `boolean` |  |
+| `receiver` | `Record<string, any>` |  |
 
 #### Example: Create
 

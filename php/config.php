@@ -58,6 +58,7 @@ class InvoiceExtractionConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/health',
                   'parts' => [
@@ -82,31 +83,59 @@ class InvoiceExtractionConfig
           'fields' => [
             [
               'active' => true,
-              'name' => 'data',
+              'name' => 'amounts',
               'req' => false,
               'type' => '`$OBJECT`',
               'index$' => 0,
             ],
             [
               'active' => true,
+              'name' => 'confidence',
+              'req' => false,
+              'type' => '`$NUMBER`',
+              'index$' => 1,
+            ],
+            [
+              'active' => true,
+              'name' => 'document',
+              'req' => false,
+              'type' => '`$OBJECT`',
+              'index$' => 2,
+            ],
+            [
+              'active' => true,
               'name' => 'file_base64',
               'req' => true,
               'type' => '`$STRING`',
-              'index$' => 1,
+              'index$' => 3,
+            ],
+            [
+              'active' => true,
+              'name' => 'issuer',
+              'req' => false,
+              'type' => '`$OBJECT`',
+              'index$' => 4,
+            ],
+            [
+              'active' => true,
+              'name' => 'items',
+              'req' => false,
+              'type' => '`$ARRAY`',
+              'index$' => 5,
             ],
             [
               'active' => true,
               'name' => 'media_type',
               'req' => true,
               'type' => '`$STRING`',
-              'index$' => 2,
+              'index$' => 6,
             ],
             [
               'active' => true,
-              'name' => 'success',
+              'name' => 'receiver',
               'req' => false,
-              'type' => '`$BOOLEAN`',
-              'index$' => 3,
+              'type' => '`$OBJECT`',
+              'index$' => 7,
             ],
           ],
           'name' => 'invoice_extraction',
@@ -118,6 +147,7 @@ class InvoiceExtractionConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/extract',
                   'parts' => [
@@ -126,7 +156,7 @@ class InvoiceExtractionConfig
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.data`',
                   ],
                   'index$' => 0,
                 ],

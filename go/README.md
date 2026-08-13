@@ -276,10 +276,14 @@ API path: `/health`
 
 | Field | Description |
 | --- | --- |
-| `"data"` |  |
+| `"amounts"` |  |
+| `"confidence"` |  |
+| `"document"` |  |
 | `"file_base64"` |  |
+| `"issuer"` |  |
+| `"items"` |  |
 | `"media_type"` |  |
-| `"success"` |  |
+| `"receiver"` |  |
 
 Operations: Create.
 
@@ -332,10 +336,14 @@ Create an instance: `invoiceExtraction := client.InvoiceExtraction(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `map[string]any` |  |
+| `amounts` | `map[string]any` |  |
+| `confidence` | `float64` |  |
+| `document` | `map[string]any` |  |
 | `file_base64` | `string` |  |
+| `issuer` | `map[string]any` |  |
+| `items` | `[]any` |  |
 | `media_type` | `string` |  |
-| `success` | `bool` |  |
+| `receiver` | `map[string]any` |  |
 
 #### Example: Create
 
