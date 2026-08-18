@@ -28,7 +28,7 @@ class InvoiceExtractionSDK
     utility = InvoiceExtractionUtility.new
     @_utility = utility
 
-    config = InvoiceExtractionConfig.make_config
+    config = InvoiceExtractionConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

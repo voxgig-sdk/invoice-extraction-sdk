@@ -40,7 +40,7 @@ class InvoiceExtractionSDK
         $utility = new InvoiceExtractionUtility();
         $this->_utility = $utility;
 
-        $config = InvoiceExtractionConfig::make_config();
+        $config = InvoiceExtractionConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

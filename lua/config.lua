@@ -1,5 +1,8 @@
 -- InvoiceExtraction SDK configuration
 
+-- Build a fresh, fully materialised config table. Every call rebuilds the
+-- whole structure, so prefer require("config_shared") unless you need a
+-- private copy you intend to mutate.
 local function make_config()
   return {
     main = {
@@ -29,18 +32,12 @@ local function make_config()
       ["health"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "status",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "timestamp",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 1,
           },
         },
         ["name"] = "health",
@@ -50,7 +47,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
@@ -63,10 +59,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "load",
           },
         },
         ["relations"] = {
@@ -76,60 +70,38 @@ local function make_config()
       ["invoice_extraction"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "amounts",
-            ["req"] = false,
             ["type"] = "`$OBJECT`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "confidence",
-            ["req"] = false,
             ["type"] = "`$NUMBER`",
-            ["index$"] = 1,
           },
           {
-            ["active"] = true,
             ["name"] = "document",
-            ["req"] = false,
             ["type"] = "`$OBJECT`",
-            ["index$"] = 2,
           },
           {
-            ["active"] = true,
             ["name"] = "file_base64",
             ["req"] = true,
             ["type"] = "`$STRING`",
-            ["index$"] = 3,
           },
           {
-            ["active"] = true,
             ["name"] = "issuer",
-            ["req"] = false,
             ["type"] = "`$OBJECT`",
-            ["index$"] = 4,
           },
           {
-            ["active"] = true,
             ["name"] = "items",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 5,
           },
           {
-            ["active"] = true,
             ["name"] = "media_type",
             ["req"] = true,
             ["type"] = "`$STRING`",
-            ["index$"] = 6,
           },
           {
-            ["active"] = true,
             ["name"] = "receiver",
-            ["req"] = false,
             ["type"] = "`$OBJECT`",
-            ["index$"] = 7,
           },
         },
         ["name"] = "invoice_extraction",
@@ -139,7 +111,6 @@ local function make_config()
             ["name"] = "create",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "POST",
@@ -152,10 +123,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.data`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "create",
           },
         },
         ["relations"] = {

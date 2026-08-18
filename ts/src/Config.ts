@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://invoiceextract-api-production.up.railway.app',
+    base: "https://invoiceextract-api-production.up.railway.app",
 
     auth: {
       prefix: '',
@@ -62,18 +62,12 @@ class Config {
     "health": {
       "fields": [
         {
-          "active": true,
           "name": "status",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "timestamp",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         }
       ],
       "name": "health",
@@ -83,7 +77,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -95,11 +88,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -109,60 +100,38 @@ class Config {
     "invoice_extraction": {
       "fields": [
         {
-          "active": true,
           "name": "amounts",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 0
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "confidence",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 1
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "document",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 2
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "file_base64",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 3
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "issuer",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 4
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "items",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 5
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "media_type",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "receiver",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 7
+          "type": "`$OBJECT`"
         }
       ],
       "name": "invoice_extraction",
@@ -172,7 +141,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -184,11 +152,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
