@@ -180,14 +180,14 @@ const invoice_extraction = client.InvoiceExtraction()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `amounts` | `Record<string, any>` | No |  |
-| `confidence` | `number` | No |  |
-| `document` | `Record<string, any>` | No |  |
-| `file_base64` | `string` | Yes |  |
-| `issuer` | `Record<string, any>` | No |  |
-| `items` | `any[]` | No |  |
-| `media_type` | `string` | Yes |  |
-| `receiver` | `Record<string, any>` | No |  |
+| `amounts` | `Record<string, any>` | No | Financial amounts from the invoice |
+| `confidence` | `number` | No | Confidence score of the extraction (0 to 1) |
+| `document` | `Record<string, any>` | No | Document metadata |
+| `file_base64` | `string` | Yes | Base64-encoded invoice file (PDF, JPG, PNG, or WEBP) |
+| `issuer` | `Record<string, any>` | No | Information about the invoice issuer/vendor |
+| `items` | `any[]` | No | Line items from the invoice |
+| `media_type` | `string` | Yes | MIME type of the submitted file |
+| `receiver` | `Record<string, any>` | No | Information about the invoice receiver/customer |
 
 ### Operations
 

@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'InvoiceExtraction',
+        slug: "invoice-extraction",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -101,36 +112,44 @@ class Config {
       "fields": [
         {
           "name": "amounts",
+          "short": "Financial amounts from the invoice",
           "type": "`$OBJECT`"
         },
         {
           "name": "confidence",
+          "short": "Confidence score of the extraction (0 to 1)",
           "type": "`$NUMBER`"
         },
         {
           "name": "document",
+          "short": "Document metadata",
           "type": "`$OBJECT`"
         },
         {
           "name": "file_base64",
           "req": true,
+          "short": "Base64-encoded invoice file (PDF, JPG, PNG, or WEBP)",
           "type": "`$STRING`"
         },
         {
           "name": "issuer",
+          "short": "Information about the invoice issuer/vendor",
           "type": "`$OBJECT`"
         },
         {
           "name": "items",
+          "short": "Line items from the invoice",
           "type": "`$ARRAY`"
         },
         {
           "name": "media_type",
           "req": true,
+          "short": "MIME type of the submitted file",
           "type": "`$STRING`"
         },
         {
           "name": "receiver",
+          "short": "Information about the invoice receiver/customer",
           "type": "`$OBJECT`"
         }
       ],

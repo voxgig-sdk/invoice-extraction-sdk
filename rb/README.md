@@ -252,14 +252,14 @@ API path: `/health`
 
 | Field | Description |
 | --- | --- |
-| `amounts` |  |
-| `confidence` |  |
-| `document` |  |
-| `file_base64` |  |
-| `issuer` |  |
-| `items` |  |
-| `media_type` |  |
-| `receiver` |  |
+| `amounts` | Financial amounts from the invoice |
+| `confidence` | Confidence score of the extraction (0 to 1) |
+| `document` | Document metadata |
+| `file_base64` | Base64-encoded invoice file (PDF, JPG, PNG, or WEBP) |
+| `issuer` | Information about the invoice issuer/vendor |
+| `items` | Line items from the invoice |
+| `media_type` | MIME type of the submitted file |
+| `receiver` | Information about the invoice receiver/customer |
 
 Operations: Create.
 
@@ -309,14 +309,14 @@ Create an instance: `invoice_extraction = client.InvoiceExtraction`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `amounts` | `Hash` |  |
-| `confidence` | `Float` |  |
-| `document` | `Hash` |  |
-| `file_base64` | `String` |  |
-| `issuer` | `Hash` |  |
-| `items` | `Array` |  |
-| `media_type` | `String` |  |
-| `receiver` | `Hash` |  |
+| `amounts` | `Hash` | Financial amounts from the invoice |
+| `confidence` | `Float` | Confidence score of the extraction (0 to 1) |
+| `document` | `Hash` | Document metadata |
+| `file_base64` | `String` | Base64-encoded invoice file (PDF, JPG, PNG, or WEBP) |
+| `issuer` | `Hash` | Information about the invoice issuer/vendor |
+| `items` | `Array` | Line items from the invoice |
+| `media_type` | `String` | MIME type of the submitted file |
+| `receiver` | `Hash` | Information about the invoice receiver/customer |
 
 #### Example: Create
 

@@ -151,14 +151,14 @@ invoice_extraction = client.InvoiceExtraction
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `amounts` | `Hash` | No |  |
-| `confidence` | `Float` | No |  |
-| `document` | `Hash` | No |  |
-| `file_base64` | `String` | Yes |  |
-| `issuer` | `Hash` | No |  |
-| `items` | `Array` | No |  |
-| `media_type` | `String` | Yes |  |
-| `receiver` | `Hash` | No |  |
+| `amounts` | `Hash` | No | Financial amounts from the invoice |
+| `confidence` | `Float` | No | Confidence score of the extraction (0 to 1) |
+| `document` | `Hash` | No | Document metadata |
+| `file_base64` | `String` | Yes | Base64-encoded invoice file (PDF, JPG, PNG, or WEBP) |
+| `issuer` | `Hash` | No | Information about the invoice issuer/vendor |
+| `items` | `Array` | No | Line items from the invoice |
+| `media_type` | `String` | Yes | MIME type of the submitted file |
+| `receiver` | `Hash` | No | Information about the invoice receiver/customer |
 
 ### Operations
 

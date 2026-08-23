@@ -150,14 +150,14 @@ $invoice_extraction = $client->InvoiceExtraction();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `amounts` | `array` | No |  |
-| `confidence` | `float` | No |  |
-| `document` | `array` | No |  |
-| `file_base64` | `string` | Yes |  |
-| `issuer` | `array` | No |  |
-| `items` | `array` | No |  |
-| `media_type` | `string` | Yes |  |
-| `receiver` | `array` | No |  |
+| `amounts` | `array` | No | Financial amounts from the invoice |
+| `confidence` | `float` | No | Confidence score of the extraction (0 to 1) |
+| `document` | `array` | No | Document metadata |
+| `file_base64` | `string` | Yes | Base64-encoded invoice file (PDF, JPG, PNG, or WEBP) |
+| `issuer` | `array` | No | Information about the invoice issuer/vendor |
+| `items` | `array` | No | Line items from the invoice |
+| `media_type` | `string` | Yes | MIME type of the submitted file |
+| `receiver` | `array` | No | Information about the invoice receiver/customer |
 
 ### Operations
 

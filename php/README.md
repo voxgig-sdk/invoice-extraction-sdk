@@ -262,14 +262,14 @@ API path: `/health`
 
 | Field | Description |
 | --- | --- |
-| `amounts` |  |
-| `confidence` |  |
-| `document` |  |
-| `file_base64` |  |
-| `issuer` |  |
-| `items` |  |
-| `media_type` |  |
-| `receiver` |  |
+| `amounts` | Financial amounts from the invoice |
+| `confidence` | Confidence score of the extraction (0 to 1) |
+| `document` | Document metadata |
+| `file_base64` | Base64-encoded invoice file (PDF, JPG, PNG, or WEBP) |
+| `issuer` | Information about the invoice issuer/vendor |
+| `items` | Line items from the invoice |
+| `media_type` | MIME type of the submitted file |
+| `receiver` | Information about the invoice receiver/customer |
 
 Operations: Create.
 
@@ -319,14 +319,14 @@ Create an instance: `$invoice_extraction = $client->InvoiceExtraction();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `amounts` | `array` |  |
-| `confidence` | `float` |  |
-| `document` | `array` |  |
-| `file_base64` | `string` |  |
-| `issuer` | `array` |  |
-| `items` | `array` |  |
-| `media_type` | `string` |  |
-| `receiver` | `array` |  |
+| `amounts` | `array` | Financial amounts from the invoice |
+| `confidence` | `float` | Confidence score of the extraction (0 to 1) |
+| `document` | `array` | Document metadata |
+| `file_base64` | `string` | Base64-encoded invoice file (PDF, JPG, PNG, or WEBP) |
+| `issuer` | `array` | Information about the invoice issuer/vendor |
+| `items` | `array` | Line items from the invoice |
+| `media_type` | `string` | MIME type of the submitted file |
+| `receiver` | `array` | Information about the invoice receiver/customer |
 
 #### Example: Create
 

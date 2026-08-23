@@ -155,14 +155,14 @@ fmt.Println(invoiceExtraction.GetName()) // "invoice_extraction"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `amounts` | `map[string]any` | No |  |
-| `confidence` | `float64` | No |  |
-| `document` | `map[string]any` | No |  |
-| `file_base64` | `string` | Yes |  |
-| `issuer` | `map[string]any` | No |  |
-| `items` | `[]any` | No |  |
-| `media_type` | `string` | Yes |  |
-| `receiver` | `map[string]any` | No |  |
+| `amounts` | `map[string]any` | No | Financial amounts from the invoice |
+| `confidence` | `float64` | No | Confidence score of the extraction (0 to 1) |
+| `document` | `map[string]any` | No | Document metadata |
+| `file_base64` | `string` | Yes | Base64-encoded invoice file (PDF, JPG, PNG, or WEBP) |
+| `issuer` | `map[string]any` | No | Information about the invoice issuer/vendor |
+| `items` | `[]any` | No | Line items from the invoice |
+| `media_type` | `string` | Yes | MIME type of the submitted file |
+| `receiver` | `map[string]any` | No | Information about the invoice receiver/customer |
 
 ### Operations
 

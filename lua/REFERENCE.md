@@ -148,14 +148,14 @@ local invoice_extraction = client:InvoiceExtraction(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `amounts` | `table` | No |  |
-| `confidence` | `number` | No |  |
-| `document` | `table` | No |  |
-| `file_base64` | `string` | Yes |  |
-| `issuer` | `table` | No |  |
-| `items` | `table` | No |  |
-| `media_type` | `string` | Yes |  |
-| `receiver` | `table` | No |  |
+| `amounts` | `table` | No | Financial amounts from the invoice |
+| `confidence` | `number` | No | Confidence score of the extraction (0 to 1) |
+| `document` | `table` | No | Document metadata |
+| `file_base64` | `string` | Yes | Base64-encoded invoice file (PDF, JPG, PNG, or WEBP) |
+| `issuer` | `table` | No | Information about the invoice issuer/vendor |
+| `items` | `table` | No | Line items from the invoice |
+| `media_type` | `string` | Yes | MIME type of the submitted file |
+| `receiver` | `table` | No | Information about the invoice receiver/customer |
 
 ### Operations
 

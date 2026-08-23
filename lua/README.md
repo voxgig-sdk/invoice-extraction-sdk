@@ -242,14 +242,14 @@ API path: `/health`
 
 | Field | Description |
 | --- | --- |
-| `amounts` |  |
-| `confidence` |  |
-| `document` |  |
-| `file_base64` |  |
-| `issuer` |  |
-| `items` |  |
-| `media_type` |  |
-| `receiver` |  |
+| `amounts` | Financial amounts from the invoice |
+| `confidence` | Confidence score of the extraction (0 to 1) |
+| `document` | Document metadata |
+| `file_base64` | Base64-encoded invoice file (PDF, JPG, PNG, or WEBP) |
+| `issuer` | Information about the invoice issuer/vendor |
+| `items` | Line items from the invoice |
+| `media_type` | MIME type of the submitted file |
+| `receiver` | Information about the invoice receiver/customer |
 
 Operations: Create.
 
@@ -298,14 +298,14 @@ Create an instance: `local invoice_extraction = client:InvoiceExtraction(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `amounts` | `table` |  |
-| `confidence` | `number` |  |
-| `document` | `table` |  |
-| `file_base64` | `string` |  |
-| `issuer` | `table` |  |
-| `items` | `table` |  |
-| `media_type` | `string` |  |
-| `receiver` | `table` |  |
+| `amounts` | `table` | Financial amounts from the invoice |
+| `confidence` | `number` | Confidence score of the extraction (0 to 1) |
+| `document` | `table` | Document metadata |
+| `file_base64` | `string` | Base64-encoded invoice file (PDF, JPG, PNG, or WEBP) |
+| `issuer` | `table` | Information about the invoice issuer/vendor |
+| `items` | `table` | Line items from the invoice |
+| `media_type` | `string` | MIME type of the submitted file |
+| `receiver` | `table` | Information about the invoice receiver/customer |
 
 #### Example: Create
 

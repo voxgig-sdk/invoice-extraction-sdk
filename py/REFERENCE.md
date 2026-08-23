@@ -144,14 +144,14 @@ invoice_extraction = client.InvoiceExtraction()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `amounts` | `dict` | No |  |
-| `confidence` | `float` | No |  |
-| `document` | `dict` | No |  |
-| `file_base64` | `str` | Yes |  |
-| `issuer` | `dict` | No |  |
-| `items` | `list` | No |  |
-| `media_type` | `str` | Yes |  |
-| `receiver` | `dict` | No |  |
+| `amounts` | `dict` | No | Financial amounts from the invoice |
+| `confidence` | `float` | No | Confidence score of the extraction (0 to 1) |
+| `document` | `dict` | No | Document metadata |
+| `file_base64` | `str` | Yes | Base64-encoded invoice file (PDF, JPG, PNG, or WEBP) |
+| `issuer` | `dict` | No | Information about the invoice issuer/vendor |
+| `items` | `list` | No | Line items from the invoice |
+| `media_type` | `str` | Yes | MIME type of the submitted file |
+| `receiver` | `dict` | No | Information about the invoice receiver/customer |
 
 ### Operations
 

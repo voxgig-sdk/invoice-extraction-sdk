@@ -6,7 +6,7 @@ The Golang SDK for the InvoiceExtraction API — an entity-oriented client using
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Health(nil)` — each with the same small set of operations (`Load`, `Create`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -276,14 +276,14 @@ API path: `/health`
 
 | Field | Description |
 | --- | --- |
-| `"amounts"` |  |
-| `"confidence"` |  |
-| `"document"` |  |
-| `"file_base64"` |  |
-| `"issuer"` |  |
-| `"items"` |  |
-| `"media_type"` |  |
-| `"receiver"` |  |
+| `"amounts"` | Financial amounts from the invoice |
+| `"confidence"` | Confidence score of the extraction (0 to 1) |
+| `"document"` | Document metadata |
+| `"file_base64"` | Base64-encoded invoice file (PDF, JPG, PNG, or WEBP) |
+| `"issuer"` | Information about the invoice issuer/vendor |
+| `"items"` | Line items from the invoice |
+| `"media_type"` | MIME type of the submitted file |
+| `"receiver"` | Information about the invoice receiver/customer |
 
 Operations: Create.
 
@@ -336,14 +336,14 @@ Create an instance: `invoiceExtraction := client.InvoiceExtraction(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `amounts` | `map[string]any` |  |
-| `confidence` | `float64` |  |
-| `document` | `map[string]any` |  |
-| `file_base64` | `string` |  |
-| `issuer` | `map[string]any` |  |
-| `items` | `[]any` |  |
-| `media_type` | `string` |  |
-| `receiver` | `map[string]any` |  |
+| `amounts` | `map[string]any` | Financial amounts from the invoice |
+| `confidence` | `float64` | Confidence score of the extraction (0 to 1) |
+| `document` | `map[string]any` | Document metadata |
+| `file_base64` | `string` | Base64-encoded invoice file (PDF, JPG, PNG, or WEBP) |
+| `issuer` | `map[string]any` | Information about the invoice issuer/vendor |
+| `items` | `[]any` | Line items from the invoice |
+| `media_type` | `string` | MIME type of the submitted file |
+| `receiver` | `map[string]any` | Information about the invoice receiver/customer |
 
 #### Example: Create
 

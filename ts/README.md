@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -304,14 +304,14 @@ API path: `/health`
 
 | Field | Description |
 | --- | --- |
-| `amounts` |  |
-| `confidence` |  |
-| `document` |  |
-| `file_base64` |  |
-| `issuer` |  |
-| `items` |  |
-| `media_type` |  |
-| `receiver` |  |
+| `amounts` | Financial amounts from the invoice |
+| `confidence` | Confidence score of the extraction (0 to 1) |
+| `document` | Document metadata |
+| `file_base64` | Base64-encoded invoice file (PDF, JPG, PNG, or WEBP) |
+| `issuer` | Information about the invoice issuer/vendor |
+| `items` | Line items from the invoice |
+| `media_type` | MIME type of the submitted file |
+| `receiver` | Information about the invoice receiver/customer |
 
 Operations: create.
 
@@ -360,14 +360,14 @@ Create an instance: `const invoice_extraction = client.InvoiceExtraction()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `amounts` | `Record<string, any>` |  |
-| `confidence` | `number` |  |
-| `document` | `Record<string, any>` |  |
-| `file_base64` | `string` |  |
-| `issuer` | `Record<string, any>` |  |
-| `items` | `any[]` |  |
-| `media_type` | `string` |  |
-| `receiver` | `Record<string, any>` |  |
+| `amounts` | `Record<string, any>` | Financial amounts from the invoice |
+| `confidence` | `number` | Confidence score of the extraction (0 to 1) |
+| `document` | `Record<string, any>` | Document metadata |
+| `file_base64` | `string` | Base64-encoded invoice file (PDF, JPG, PNG, or WEBP) |
+| `issuer` | `Record<string, any>` | Information about the invoice issuer/vendor |
+| `items` | `any[]` | Line items from the invoice |
+| `media_type` | `string` | MIME type of the submitted file |
+| `receiver` | `Record<string, any>` | Information about the invoice receiver/customer |
 
 #### Example: Create
 

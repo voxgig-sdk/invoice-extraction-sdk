@@ -8,41 +8,49 @@ main: kit: entity: invoice_extraction: {
     {
       name: "amounts"
       req: false
+      short: "Financial amounts from the invoice"
       type: "`$OBJECT`"
     }
     {
       name: "confidence"
       req: false
+      short: "Confidence score of the extraction (0 to 1)"
       type: "`$NUMBER`"
     }
     {
       name: "document"
       req: false
+      short: "Document metadata"
       type: "`$OBJECT`"
     }
     {
       name: "file_base64"
       req: true
+      short: "Base64-encoded invoice file (PDF, JPG, PNG, or WEBP)"
       type: "`$STRING`"
     }
     {
       name: "issuer"
       req: false
+      short: "Information about the invoice issuer/vendor"
       type: "`$OBJECT`"
     }
     {
       name: "items"
       req: false
+      short: "Line items from the invoice"
       type: "`$ARRAY`"
     }
     {
       name: "media_type"
       req: true
+      short: "MIME type of the submitted file"
       type: "`$STRING`"
     }
     {
       name: "receiver"
       req: false
+      short: "Information about the invoice receiver/customer"
       type: "`$OBJECT`"
     }
   ]

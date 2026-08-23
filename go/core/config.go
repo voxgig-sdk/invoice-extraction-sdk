@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "InvoiceExtraction",
+			"slug": "invoice-extraction",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -75,36 +78,44 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "amounts",
+						"short": "Financial amounts from the invoice",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "confidence",
+						"short": "Confidence score of the extraction (0 to 1)",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "document",
+						"short": "Document metadata",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "file_base64",
 						"req": true,
+						"short": "Base64-encoded invoice file (PDF, JPG, PNG, or WEBP)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "issuer",
+						"short": "Information about the invoice issuer/vendor",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "items",
+						"short": "Line items from the invoice",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "media_type",
 						"req": true,
+						"short": "MIME type of the submitted file",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "receiver",
+						"short": "Information about the invoice receiver/customer",
 						"type": "`$OBJECT`",
 					},
 				},
