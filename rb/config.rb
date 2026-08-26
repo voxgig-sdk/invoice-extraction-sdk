@@ -28,6 +28,7 @@ module InvoiceExtractionConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
