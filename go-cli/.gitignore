@@ -1,3 +1,4 @@
 /dist/
 /invoice-extraction-cli
 /go-cli
+.jostraca/

@@ -1,6 +1,14 @@
 # InvoiceExtraction SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -61,6 +69,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "timestamp",
             "type": "`$STRING`",
           },
@@ -76,14 +85,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/health",
-                "parts": [
-                  "health",
+                "segments": [
+                  {
+                    "lit": "health",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "health",
+                ],
               },
             ],
           },
@@ -100,6 +114,7 @@ def make_config():
             "type": "`$OBJECT`",
           },
           {
+            "format": "float",
             "name": "confidence",
             "short": "Confidence score of the extraction (0 to 1)",
             "type": "`$NUMBER`",
@@ -148,14 +163,19 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/extract",
-                "parts": [
-                  "extract",
+                "segments": [
+                  {
+                    "lit": "extract",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.data`",
                 },
+                "parts": [
+                  "extract",
+                ],
               },
             ],
           },

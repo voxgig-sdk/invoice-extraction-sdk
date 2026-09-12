@@ -66,6 +66,7 @@ class InvoiceExtractionConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'timestamp',
               'type' => '`$STRING`',
             ],
@@ -81,13 +82,18 @@ class InvoiceExtractionConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/health',
-                  'parts' => [
-                    'health',
+                  'segments' => [
+                    [
+                      'lit' => 'health',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'health',
                   ],
                 ],
               ],
@@ -105,6 +111,7 @@ class InvoiceExtractionConfig
               'type' => '`$OBJECT`',
             ],
             [
+              'format' => 'float',
               'name' => 'confidence',
               'short' => 'Confidence score of the extraction (0 to 1)',
               'type' => '`$NUMBER`',
@@ -153,13 +160,18 @@ class InvoiceExtractionConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/extract',
-                  'parts' => [
-                    'extract',
+                  'segments' => [
+                    [
+                      'lit' => 'extract',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.data`',
+                  ],
+                  'parts' => [
+                    'extract',
                   ],
                 ],
               ],

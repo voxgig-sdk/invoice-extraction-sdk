@@ -52,7 +52,7 @@ func TestInvoiceExtractionEntity(t *testing.T) {
 		// CREATE
 		invoiceExtractionRef01Ent := client.InvoiceExtraction(nil)
 		invoiceExtractionRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "invoice_extraction"}, setup.data), "invoice_extraction_ref01"))
+			vs.GetPath(setup.data, []any{"new", "invoice_extraction"}), "invoice_extraction_ref01"))
 
 		invoiceExtractionRef01DataResult, err := invoiceExtractionRef01Ent.Create(invoiceExtractionRef01Data, nil)
 		if err != nil {
@@ -90,7 +90,7 @@ func invoice_extractionBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"invoice_extraction01", "invoice_extraction02", "invoice_extraction03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -110,7 +110,7 @@ func invoice_extractionBasicSetup(extra map[string]any) *entityTestSetup {
 		"INVOICE_EXTRACTION_TEST_INVOICE_EXTRACTION_ENTID": idmap,
 		"INVOICE_EXTRACTION_TEST_LIVE":      "FALSE",
 		"INVOICE_EXTRACTION_TEST_EXPLAIN":   "FALSE",
-		"INVOICE_EXTRACTION_APIKEY":         "NONE",
+		"INVOICE_EXTRACTION_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["INVOICE_EXTRACTION_TEST_INVOICE_EXTRACTION_ENTID"])
@@ -119,11 +119,23 @@ func invoice_extractionBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["INVOICE_EXTRACTION_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["INVOICE_EXTRACTION_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewInvoiceExtractionSDK(core.ToMapAny(mergedOpts))
 	}

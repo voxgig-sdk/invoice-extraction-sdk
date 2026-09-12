@@ -61,15 +61,17 @@ def health_direct_setup(mockres)
   env = Runner.env_override({
     "INVOICE_EXTRACTION_TEST_HEALTH_ENTID" => {},
     "INVOICE_EXTRACTION_TEST_LIVE" => "FALSE",
-    "INVOICE_EXTRACTION_APIKEY" => "NONE",
+    "INVOICE_EXTRACTION_APIKEY" => "",
   })
 
   live = env["INVOICE_EXTRACTION_TEST_LIVE"] == "TRUE"
 
   if live
-    merged_opts = {
+    # Merged so the generated fields win: sdk-test-control.json's
+    # test.client.options adds to the live client, it does not redirect it.
+    merged_opts = Runner.live_client_options.merge({
       "apikey" => env["INVOICE_EXTRACTION_APIKEY"],
-    }
+    })
     client = InvoiceExtractionSDK.new(merged_opts)
     return {
       client: client,

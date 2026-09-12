@@ -11,6 +11,7 @@ main: kit: entity: health: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "timestamp"
       req: false
       type: "`$STRING`"
@@ -25,8 +26,10 @@ main: kit: entity: health: {
         {
           method: "GET"
           orig: "/health"
-          parts: [
-            "health"
+          segments: [
+            {
+              lit: "health"
+            }
           ]
           transform: {
             req: "`reqdata`"

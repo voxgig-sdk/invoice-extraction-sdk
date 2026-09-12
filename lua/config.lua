@@ -40,6 +40,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "timestamp",
             ["type"] = "`$STRING`",
           },
@@ -55,13 +56,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/health",
-                ["parts"] = {
-                  "health",
+                ["segments"] = {
+                  {
+                    ["lit"] = "health",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "health",
                 },
               },
             },
@@ -79,6 +85,7 @@ local function make_config()
             ["type"] = "`$OBJECT`",
           },
           {
+            ["format"] = "float",
             ["name"] = "confidence",
             ["short"] = "Confidence score of the extraction (0 to 1)",
             ["type"] = "`$NUMBER`",
@@ -127,13 +134,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/extract",
-                ["parts"] = {
-                  "extract",
+                ["segments"] = {
+                  {
+                    ["lit"] = "extract",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.data`",
+                },
+                ["parts"] = {
+                  "extract",
                 },
               },
             },
