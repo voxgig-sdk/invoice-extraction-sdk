@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { InvoiceExtractionSDK } from '@voxgig-sdk/invoice-extraction'
+import { InvoiceExtractionSDK } from '@voxgig-sdk/invoice-extraction-sdk'
 
 const client = new InvoiceExtractionSDK({
   apikey: process.env.INVOICE_EXTRACTION_APIKEY,
@@ -461,7 +461,7 @@ invoice-extraction/
 Import the SDK from the package root:
 
 ```ts
-import { InvoiceExtractionSDK } from '@voxgig-sdk/invoice-extraction'
+import { InvoiceExtractionSDK } from '@voxgig-sdk/invoice-extraction-sdk'
 ```
 
 ### Entity state

@@ -105,7 +105,7 @@ local result, err = client:Health():load()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/invoice-extraction` | publish pending — [install from git tag](https://github.com/voxgig-sdk/invoice-extraction-sdk/releases) |
+| TypeScript | `@voxgig-sdk/invoice-extraction-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/invoice-extraction-sdk/releases) |
 | Python | `voxgig-sdk-invoice-extraction` | publish pending — [install from git tag](https://github.com/voxgig-sdk/invoice-extraction-sdk/releases) |
 | PHP | `voxgig-sdk/invoice-extraction` | publish pending — [install from git tag](https://github.com/voxgig-sdk/invoice-extraction-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/invoice-extraction-sdk/go` | `go get github.com/voxgig-sdk/invoice-extraction-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:Health():load()
 ### TypeScript
 
 ```ts
-import { InvoiceExtractionSDK } from '@voxgig-sdk/invoice-extraction'
+import { InvoiceExtractionSDK } from '@voxgig-sdk/invoice-extraction-sdk'
 
 const client = new InvoiceExtractionSDK({
   apikey: process.env.INVOICE_EXTRACTION_APIKEY,
