@@ -25,5 +25,48 @@
         "timestamp": "s51"
       }
     }
+  },
+  "requests": {
+    "GET /health": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "healthCheck",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": {
+                      "example": "healthy",
+                      "type": "string"
+                    },
+                    "timestamp": {
+                      "example": "2024-11-15T10:30:00Z",
+                      "format": "date-time",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Service is healthy"
+          }
+        },
+        "security": [],
+        "securitySchemes": {
+          "ApiKeyAuth": {
+            "description": "API key authentication. Get your free API key at https://invoiceextract.com.mx/. Format: 'iek_your_key_here'",
+            "in": "header",
+            "name": "x-api-key",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "operation"
+      }
+    }
   }
 }

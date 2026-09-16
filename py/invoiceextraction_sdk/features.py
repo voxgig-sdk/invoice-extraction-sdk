@@ -1,12 +1,18 @@
 # InvoiceExtraction SDK feature factory
 
 from invoiceextraction_sdk.feature.base_feature import InvoiceExtractionBaseFeature
+from invoiceextraction_sdk.feature.ratelimit_feature import InvoiceExtractionRatelimitFeature
+from invoiceextraction_sdk.feature.retry_feature import InvoiceExtractionRetryFeature
 from invoiceextraction_sdk.feature.test_feature import InvoiceExtractionTestFeature
+from invoiceextraction_sdk.feature.timeout_feature import InvoiceExtractionTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: InvoiceExtractionBaseFeature(),
+    "ratelimit": lambda: InvoiceExtractionRatelimitFeature(),
+    "retry": lambda: InvoiceExtractionRetryFeature(),
     "test": lambda: InvoiceExtractionTestFeature(),
+    "timeout": lambda: InvoiceExtractionTimeoutFeature(),
 }
 
 
