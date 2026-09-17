@@ -1,4 +1,4 @@
 # Flows
 
-@"BasicHealthFlow.aon"
-@"BasicInvoiceExtractionFlow.aon"
+@"./BasicHealthFlow.aon"
+@"./BasicInvoiceExtractionFlow.aon"

@@ -106,6 +106,7 @@ def make_config():
             "base": "https://invoiceextract-api-production.up.railway.app",
             "auth": {
                 "prefix": "",
+                "name": "x-api-key",
             },
             "headers": {
         "content-type": "application/json",

@@ -105,12 +105,12 @@ local result, err = client:Health():load()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/invoice-extraction-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/invoice-extraction-sdk/releases) |
-| Python | `voxgig-sdk-invoice-extraction` | publish pending — [install from git tag](https://github.com/voxgig-sdk/invoice-extraction-sdk/releases) |
-| PHP | `voxgig-sdk/invoice-extraction` | publish pending — [install from git tag](https://github.com/voxgig-sdk/invoice-extraction-sdk/releases) |
+| TypeScript | `@voxgig-sdk/invoice-extraction-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/invoice-extraction-sdk/tags) |
+| Python | `voxgig-sdk-invoice-extraction` | publish pending — [install from git tag](https://github.com/voxgig-sdk/invoice-extraction-sdk/tags) |
+| PHP | `voxgig-sdk/invoice-extraction` | publish pending — [install from git tag](https://github.com/voxgig-sdk/invoice-extraction-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/invoice-extraction-sdk/go` | `go get github.com/voxgig-sdk/invoice-extraction-sdk/go@latest` |
-| Ruby | `voxgig-sdk-invoice-extraction` | publish pending — [install from git tag](https://github.com/voxgig-sdk/invoice-extraction-sdk/releases) |
-| Lua | `voxgig-sdk-invoice-extraction` | publish pending — [install from git tag](https://github.com/voxgig-sdk/invoice-extraction-sdk/releases) |
+| Ruby | `voxgig-sdk-invoice-extraction` | publish pending — [install from git tag](https://github.com/voxgig-sdk/invoice-extraction-sdk/tags) |
+| Lua | `voxgig-sdk-invoice-extraction` | publish pending — [install from git tag](https://github.com/voxgig-sdk/invoice-extraction-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/invoice-extraction-sdk/go-cli` | `go install github.com/voxgig-sdk/invoice-extraction-sdk/go-cli/cmd/invoice-extraction@latest` |
 | Go MCP server | `github.com/voxgig-sdk/invoice-extraction-sdk/go-mcp` | `go get github.com/voxgig-sdk/invoice-extraction-sdk/go-mcp@latest` |
 

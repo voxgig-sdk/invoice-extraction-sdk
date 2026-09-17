@@ -81,6 +81,7 @@ func MakeConfig() map[string]any {
 			"base": "https://invoiceextract-api-production.up.railway.app",
 			"auth": map[string]any{
 				"prefix": "",
+				"name": "x-api-key",
 			},
 			"headers": map[string]any{
 				"content-type": "application/json",

@@ -3,7 +3,7 @@
 from __future__ import annotations
 from invoiceextraction_sdk.utility.voxgig_struct import voxgig_struct as vs
 
-HEADER_AUTH = "authorization"
+HEADER_AUTH = "x-api-key"
 OPTION_APIKEY = "apikey"
 NOT_FOUND = "__NOTFOUND__"
 

@@ -2,7 +2,7 @@
 
 local vs = require("utility.struct.struct")
 
-local HEADER_AUTH = "authorization"
+local HEADER_AUTH = "x-api-key"
 local OPTION_APIKEY = "apikey"
 local NOT_FOUND = "__NOTFOUND__"
 
