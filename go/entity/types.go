@@ -1,7 +1,7 @@
 // Typed models for the InvoiceExtraction SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,8 +14,6 @@ import (
 
 // Health is the typed data model for the health entity.
 type Health struct {
-	Status *string `json:"status,omitempty"`
-	Timestamp *string `json:"timestamp,omitempty"`
 }
 
 // HealthLoadMatch is the typed request payload for Health.LoadTyped.
@@ -26,14 +24,6 @@ type HealthLoadMatch struct {
 
 // InvoiceExtraction is the typed data model for the invoice_extraction entity.
 type InvoiceExtraction struct {
-	Amounts *map[string]any `json:"amounts,omitempty"`
-	Confidence *float64 `json:"confidence,omitempty"`
-	Document *map[string]any `json:"document,omitempty"`
-	FileBase64 string `json:"file_base64"`
-	Issuer *map[string]any `json:"issuer,omitempty"`
-	Items *[]any `json:"items,omitempty"`
-	MediaType string `json:"media_type"`
-	Receiver *map[string]any `json:"receiver,omitempty"`
 }
 
 // InvoiceExtractionCreateData is the typed request payload for InvoiceExtraction.CreateTyped.

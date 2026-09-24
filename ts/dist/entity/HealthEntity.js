@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HealthEntity = void 0;
 const InvoiceExtractionEntityBase_1 = require("../InvoiceExtractionEntityBase");
-// TODO: needs Entity superclass
 class HealthEntity extends InvoiceExtractionEntityBase_1.InvoiceExtractionEntityBase {
     constructor(client, entopts) {
         super(client, entopts);
@@ -80,12 +79,6 @@ class HealthEntity extends InvoiceExtractionEntityBase_1.InvoiceExtractionEntity
                 }
             }
             const out = done(ctx);
-            // An operation resolves to the ENTITY, not the raw data — the record
-            // has just been absorbed into this instance and is reached through
-            // data(). `done` still runs: it completes the pipeline and raises on
-            // failure, and when throwing is disabled it hands back the error
-            // payload, which passes through unchanged. See AGENTS.md "Entity
-            // operations return ENTITIES".
             return (ctx.result && ctx.result.ok) ? this : out;
         }
         catch (err) {

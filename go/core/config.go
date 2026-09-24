@@ -96,12 +96,14 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "status",
+						"title": "Status",
 						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "timestamp",
+						"title": "Timestamp",
 						"type": "`$STRING`",
+						"format": "date-time",
 					},
 				},
 				"name": "health",
@@ -111,7 +113,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/health",
@@ -120,14 +121,16 @@ func MakeConfig() map[string]any {
 										"lit": "health",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"health",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"health",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -140,46 +143,54 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "amounts",
-						"short": "Financial amounts from the invoice",
+						"title": "Amounts",
 						"type": "`$OBJECT`",
+						"short": "Financial amounts from the invoice",
 					},
 					map[string]any{
-						"format": "float",
 						"name": "confidence",
-						"short": "Confidence score of the extraction (0 to 1)",
+						"title": "Confidence",
 						"type": "`$NUMBER`",
+						"short": "Confidence score of the extraction (0 to 1)",
+						"format": "float",
 					},
 					map[string]any{
 						"name": "document",
-						"short": "Document metadata",
+						"title": "Document",
 						"type": "`$OBJECT`",
+						"short": "Document metadata",
 					},
 					map[string]any{
 						"name": "file_base64",
+						"title": "File Base64",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Base64-encoded invoice file (PDF, JPG, PNG, or WEBP)",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "issuer",
-						"short": "Information about the invoice issuer/vendor",
+						"title": "Issuer",
 						"type": "`$OBJECT`",
+						"short": "Information about the invoice issuer/vendor",
 					},
 					map[string]any{
 						"name": "items",
-						"short": "Line items from the invoice",
+						"title": "Items",
 						"type": "`$ARRAY`",
+						"short": "Line items from the invoice",
 					},
 					map[string]any{
 						"name": "media_type",
+						"title": "Media Type",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "MIME type of the submitted file",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "receiver",
-						"short": "Information about the invoice receiver/customer",
+						"title": "Receiver",
 						"type": "`$OBJECT`",
+						"short": "Information about the invoice receiver/customer",
 					},
 				},
 				"name": "invoice_extraction",
@@ -189,7 +200,6 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/extract",
@@ -198,14 +208,16 @@ func MakeConfig() map[string]any {
 										"lit": "extract",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"extract",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.data`",
 								},
-								"parts": []any{
-									"extract",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},

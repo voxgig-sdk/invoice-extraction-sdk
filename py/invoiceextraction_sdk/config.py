@@ -121,12 +121,14 @@ def make_config():
         "fields": [
           {
             "name": "status",
+            "title": "Status",
             "type": "`$STRING`",
           },
           {
-            "format": "date-time",
             "name": "timestamp",
+            "title": "Timestamp",
             "type": "`$STRING`",
+            "format": "date-time",
           },
         ],
         "name": "health",
@@ -136,7 +138,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/health",
@@ -145,14 +146,16 @@ def make_config():
                     "lit": "health",
                   },
                 ],
-                "select": {},
+                "parts": [
+                  "health",
+                ],
+                "rename": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "parts": [
-                  "health",
-                ],
+                "args": {},
+                "select": {},
               },
             ],
           },
@@ -165,46 +168,54 @@ def make_config():
         "fields": [
           {
             "name": "amounts",
-            "short": "Financial amounts from the invoice",
+            "title": "Amounts",
             "type": "`$OBJECT`",
+            "short": "Financial amounts from the invoice",
           },
           {
-            "format": "float",
             "name": "confidence",
-            "short": "Confidence score of the extraction (0 to 1)",
+            "title": "Confidence",
             "type": "`$NUMBER`",
+            "short": "Confidence score of the extraction (0 to 1)",
+            "format": "float",
           },
           {
             "name": "document",
-            "short": "Document metadata",
+            "title": "Document",
             "type": "`$OBJECT`",
+            "short": "Document metadata",
           },
           {
             "name": "file_base64",
+            "title": "File Base64",
+            "type": "`$STRING`",
             "req": True,
             "short": "Base64-encoded invoice file (PDF, JPG, PNG, or WEBP)",
-            "type": "`$STRING`",
           },
           {
             "name": "issuer",
-            "short": "Information about the invoice issuer/vendor",
+            "title": "Issuer",
             "type": "`$OBJECT`",
+            "short": "Information about the invoice issuer/vendor",
           },
           {
             "name": "items",
-            "short": "Line items from the invoice",
+            "title": "Items",
             "type": "`$ARRAY`",
+            "short": "Line items from the invoice",
           },
           {
             "name": "media_type",
+            "title": "Media Type",
+            "type": "`$STRING`",
             "req": True,
             "short": "MIME type of the submitted file",
-            "type": "`$STRING`",
           },
           {
             "name": "receiver",
-            "short": "Information about the invoice receiver/customer",
+            "title": "Receiver",
             "type": "`$OBJECT`",
+            "short": "Information about the invoice receiver/customer",
           },
         ],
         "name": "invoice_extraction",
@@ -214,7 +225,6 @@ def make_config():
             "name": "create",
             "points": [
               {
-                "args": {},
                 "kind": "http",
                 "method": "POST",
                 "orig": "/extract",
@@ -223,14 +233,16 @@ def make_config():
                     "lit": "extract",
                   },
                 ],
-                "select": {},
+                "parts": [
+                  "extract",
+                ],
+                "rename": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.data`",
                 },
-                "parts": [
-                  "extract",
-                ],
+                "args": {},
+                "select": {},
               },
             ],
           },

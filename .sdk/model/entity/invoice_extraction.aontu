@@ -1,0 +1,96 @@
+# Entity: invoice_extraction
+
+main: kit: entity: invoice_extraction: {
+
+  alias: field: {}
+
+  fields: {
+    amounts: {
+      h: "Amounts"
+      n: "amounts"
+      r: false
+      sh: "Financial amounts from the invoice"
+      t: "`$OBJECT`"
+    }
+    confidence: {
+      fo: "float"
+      h: "Confidence"
+      n: "confidence"
+      r: false
+      sh: "Confidence score of the extraction (0 to 1)"
+      t: "`$NUMBER`"
+    }
+    document: {
+      h: "Document"
+      n: "document"
+      r: false
+      sh: "Document metadata"
+      t: "`$OBJECT`"
+    }
+    file_base64: {
+      h: "File Base64"
+      n: "file_base64"
+      r: true
+      sh: "Base64-encoded invoice file (PDF, JPG, PNG, or WEBP)"
+      t: "`$STRING`"
+    }
+    issuer: {
+      h: "Issuer"
+      n: "issuer"
+      r: false
+      sh: "Information about the invoice issuer/vendor"
+      t: "`$OBJECT`"
+    }
+    items: {
+      h: "Items"
+      n: "items"
+      r: false
+      sh: "Line items from the invoice"
+      t: "`$ARRAY`"
+    }
+    media_type: {
+      h: "Media Type"
+      n: "media_type"
+      r: true
+      sh: "MIME type of the submitted file"
+      t: "`$STRING`"
+    }
+    receiver: {
+      h: "Receiver"
+      n: "receiver"
+      r: false
+      sh: "Information about the invoice receiver/customer"
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "invoice_extraction"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /extract"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/extract"
+          s: [
+            {
+              lit: "extract"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

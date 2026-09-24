@@ -11,19 +11,12 @@ const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
     timeout: TimeoutFeature_1.TimeoutFeature,
 };
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS = {};
 exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
         const fi = new fc();
-        // TODO: errors etc
         return fi;
     }
     // False for a feature added at runtime via options.extend (station's
@@ -119,12 +112,14 @@ class Config {
             "fields": [
                 {
                     "name": "status",
+                    "title": "Status",
                     "type": "`$STRING`"
                 },
                 {
-                    "format": "date-time",
                     "name": "timestamp",
-                    "type": "`$STRING`"
+                    "title": "Timestamp",
+                    "type": "`$STRING`",
+                    "format": "date-time"
                 }
             ],
             "name": "health",
@@ -134,7 +129,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/health",
@@ -143,14 +137,16 @@ class Config {
                                     "lit": "health"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "health"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "health"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 }
@@ -163,46 +159,54 @@ class Config {
             "fields": [
                 {
                     "name": "amounts",
-                    "short": "Financial amounts from the invoice",
-                    "type": "`$OBJECT`"
+                    "title": "Amounts",
+                    "type": "`$OBJECT`",
+                    "short": "Financial amounts from the invoice"
                 },
                 {
-                    "format": "float",
                     "name": "confidence",
+                    "title": "Confidence",
+                    "type": "`$NUMBER`",
                     "short": "Confidence score of the extraction (0 to 1)",
-                    "type": "`$NUMBER`"
+                    "format": "float"
                 },
                 {
                     "name": "document",
-                    "short": "Document metadata",
-                    "type": "`$OBJECT`"
+                    "title": "Document",
+                    "type": "`$OBJECT`",
+                    "short": "Document metadata"
                 },
                 {
                     "name": "file_base64",
+                    "title": "File Base64",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "Base64-encoded invoice file (PDF, JPG, PNG, or WEBP)",
-                    "type": "`$STRING`"
+                    "short": "Base64-encoded invoice file (PDF, JPG, PNG, or WEBP)"
                 },
                 {
                     "name": "issuer",
-                    "short": "Information about the invoice issuer/vendor",
-                    "type": "`$OBJECT`"
+                    "title": "Issuer",
+                    "type": "`$OBJECT`",
+                    "short": "Information about the invoice issuer/vendor"
                 },
                 {
                     "name": "items",
-                    "short": "Line items from the invoice",
-                    "type": "`$ARRAY`"
+                    "title": "Items",
+                    "type": "`$ARRAY`",
+                    "short": "Line items from the invoice"
                 },
                 {
                     "name": "media_type",
+                    "title": "Media Type",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "MIME type of the submitted file",
-                    "type": "`$STRING`"
+                    "short": "MIME type of the submitted file"
                 },
                 {
                     "name": "receiver",
-                    "short": "Information about the invoice receiver/customer",
-                    "type": "`$OBJECT`"
+                    "title": "Receiver",
+                    "type": "`$OBJECT`",
+                    "short": "Information about the invoice receiver/customer"
                 }
             ],
             "name": "invoice_extraction",
@@ -212,7 +216,6 @@ class Config {
                     "name": "create",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "POST",
                             "orig": "/extract",
@@ -221,14 +224,16 @@ class Config {
                                     "lit": "extract"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "extract"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body.data`"
                             },
-                            "parts": [
-                                "extract"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 }
