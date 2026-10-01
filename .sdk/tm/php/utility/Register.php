@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 InvoiceExtractionUtility::setRegistrar(function (InvoiceExtractionUtility $u): void {
     $u->clean = [InvoiceExtractionClean::class, 'call'];
+    $u->clean_add = [InvoiceExtractionClean::class, 'add'];
+    $u->clean_explain = [InvoiceExtractionDone::class, 'clean_explain'];
     $u->done = [InvoiceExtractionDone::class, 'call'];
     $u->make_error = [InvoiceExtractionMakeError::class, 'call'];
     $u->feature_add = [InvoiceExtractionFeatureAdd::class, 'call'];

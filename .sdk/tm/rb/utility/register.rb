@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 InvoiceExtractionUtility.registrar = ->(u) {
   u.clean = InvoiceExtractionUtilities::Clean
+  u.clean_add = InvoiceExtractionUtilities::CleanAdd
+  u.clean_explain = InvoiceExtractionUtilities::CleanExplain
   u.done = InvoiceExtractionUtilities::Done
   u.make_error = InvoiceExtractionUtilities::MakeError
   u.feature_add = InvoiceExtractionUtilities::FeatureAdd
