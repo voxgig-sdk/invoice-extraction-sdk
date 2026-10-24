@@ -3,5 +3,19 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "API key authentication. Get your free API key at https://invoiceextract.com.mx/. Format: &#39;`iek_your_key_here`&#39;",
+      "Base64-encoded invoice file (PDF, JPG, PNG, or WEBP)",
+      "Confidence score of the extraction (0 to 1)",
+      "Document metadata",
+      "Financial amounts from the invoice",
+      "Information about the invoice issuer/vendor",
+      "Production server",
+      "Service is healthy",
+      "Successful extraction of invoice data",
+      "The Invoice Extraction API is designed to process and extract data from invoices submitted in various formats. It parses key information such as vendor details, amounts, items, and dates, enabling integration with accounting and ERP systems. Supports PDF, JPG, PNG, and WEBP formats with AI-powered extraction."
+    ]
+  }
 }

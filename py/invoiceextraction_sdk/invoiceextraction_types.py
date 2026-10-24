@@ -40,15 +40,6 @@ class InvoiceExtraction(InvoiceExtractionRequired, total=False):
     receiver: dict
 
 
-class InvoiceExtractionCreateDataRequired(TypedDict):
+class InvoiceExtractionCreateData(TypedDict):
     file_base64: str
     media_type: str
-
-
-class InvoiceExtractionCreateData(InvoiceExtractionCreateDataRequired, total=False):
-    amounts: dict
-    confidence: float
-    document: dict
-    issuer: dict
-    items: list
-    receiver: dict

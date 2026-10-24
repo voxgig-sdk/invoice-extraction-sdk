@@ -73,38 +73,14 @@ InvoiceExtraction = Struct.new(
 
 # Request payload for InvoiceExtraction#create.
 #
-# @!attribute [rw] amounts
-#   @return [Hash, nil]
-#
-# @!attribute [rw] confidence
-#   @return [Float, nil]
-#
-# @!attribute [rw] document
-#   @return [Hash, nil]
-#
 # @!attribute [rw] file_base64
 #   @return [String]
 #
-# @!attribute [rw] issuer
-#   @return [Hash, nil]
-#
-# @!attribute [rw] items
-#   @return [Array, nil]
-#
 # @!attribute [rw] media_type
 #   @return [String]
-#
-# @!attribute [rw] receiver
-#   @return [Hash, nil]
 InvoiceExtractionCreateData = Struct.new(
-  :amounts,
-  :confidence,
-  :document,
   :file_base64,
-  :issuer,
-  :items,
   :media_type,
-  :receiver,
   keyword_init: true
 )
 

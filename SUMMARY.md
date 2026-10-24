@@ -47,7 +47,7 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 
 The default credential is sent in the `x-api-key` header.
 
-API key authentication. Get your free API key at https://invoiceextract.com.mx/. Format: &#39;iek_your_key_here&#39;
+API key authentication. Get your free API key at https://invoiceextract.com.mx/. Format: &#39;`iek_your_key_here`&#39;
 
 Check authentication for the route you plan to call. A route that declares no authentication can be used without credentials; this does not change the requirements of other routes. Keep credentials in environment variables or a configured secret provider, and keep them out of source control and logs.
 

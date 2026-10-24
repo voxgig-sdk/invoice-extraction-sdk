@@ -70,6 +70,10 @@ main: kit: entity: invoice_extraction: {
       name: "create"
       points: [
         {
+          bf: [
+            "file_base64"
+            "media_type"
+          ]
           co: {
             id: "POST /extract"
             source: "openapi3"
@@ -77,6 +81,10 @@ main: kit: entity: invoice_extraction: {
           }
           m: "POST"
           o: "/extract"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "extract"

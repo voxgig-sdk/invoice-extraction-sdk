@@ -27,13 +27,7 @@ export interface InvoiceExtraction {
 }
 
 export interface InvoiceExtractionCreateData {
-  amounts?: Record<string, any>
-  confidence?: number
-  document?: Record<string, any>
   file_base64: string
-  issuer?: Record<string, any>
-  items?: any[]
   media_type: string
-  receiver?: Record<string, any>
 }
 

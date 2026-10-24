@@ -28,14 +28,8 @@ type InvoiceExtraction struct {
 
 // InvoiceExtractionCreateData is the typed request payload for InvoiceExtraction.CreateTyped.
 type InvoiceExtractionCreateData struct {
-	Amounts *map[string]any `json:"amounts,omitempty"`
-	Confidence *float64 `json:"confidence,omitempty"`
-	Document *map[string]any `json:"document,omitempty"`
 	FileBase64 string `json:"file_base64"`
-	Issuer *map[string]any `json:"issuer,omitempty"`
-	Items *[]any `json:"items,omitempty"`
 	MediaType string `json:"media_type"`
-	Receiver *map[string]any `json:"receiver,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

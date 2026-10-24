@@ -34,6 +34,9 @@ class InvoiceExtractionContext implements \JsonSerializable
     public ?InvoiceExtractionResult $result;
     public ?InvoiceExtractionResponse $response;
     public InvoiceExtractionOperation $op;
+    // Set by make_error as it fires PreUnexpected, which fires once per
+    // operation.
+    public bool $unexpected_fired = false;
 
     public function __construct(array $ctxmap = [], ?self $basectx = null)
     {
@@ -125,7 +128,7 @@ class InvoiceExtractionContext implements \JsonSerializable
 
         $opcfg = \Voxgig\Struct\Struct::getpath($this->config, "entity.{$entname}.op.{$opname}");
 
-        $input = ($opname === 'update' || $opname === 'create') ? 'data' : 'match';
+        $input = ($opname === 'update' || $opname === 'create' || $opname === 'patch') ? 'data' : 'match';
 
         $points = [];
         if (is_array($opcfg)) {

@@ -329,6 +329,10 @@ initialiser
 [Rr][Ee][Cc][Ee][Ii][Vv][Ee][Rr]
 [Cc][Uu][Ss][Tt][Oo][Mm][Ee][Rr]
 [Rr][Ee][Cc][Ee][Ii][Vv][Ee][Rr]
+[Bb][Aa][Ss][Ee]64
+[Ff][Ii][Ll][Ee]_[Bb][Aa][Ss][Ee]64
+[Mm][Ee][Dd][Ii][Aa]
+[Mm][Ee][Dd][Ii][Aa]_[Tt][Yy][Pp][Ee]
 [Tt][Hh][Ee]
 [Ii][Nn][Vv][Oo][Ii][Cc][Ee]
 [Ee][Xx][Tt][Rr][Aa][Cc][Tt][Ii][Oo][Nn]
@@ -376,8 +380,7 @@ initialiser
 [Ff][Oo][Rr][Mm][Aa][Tt]
 [Ii][Ee][Kk]
 [Hh][Ee][Rr][Ee]
-[Bb][Aa][Ss][Ee]64
-[Mm][Ee][Dd][Ii][Aa]
+[Ii][Ee][Kk]_[Yy][Oo][Uu][Rr]_[Kk][Ee][Yy]_[Hh][Ee][Rr][Ee]
 [Aa][Pp][Pp][Ll][Ii][Cc][Aa][Tt][Ii][Oo][Nn]
 [Pp][Dd][Ff]
 [Ii][Mm][Aa][Gg][Ee]

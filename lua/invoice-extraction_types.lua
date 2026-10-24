@@ -25,14 +25,8 @@
 ---@field receiver? table
 
 ---@class InvoiceExtractionCreateData
----@field amounts? table
----@field confidence? number
----@field document? table
 ---@field file_base64 string
----@field issuer? table
----@field items? table
 ---@field media_type string
----@field receiver? table
 
 local M = {}
 
